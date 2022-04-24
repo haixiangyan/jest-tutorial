@@ -15,7 +15,7 @@ cd jest-starter
 npm init -y
 
 # 安装依赖
-npm i -D jest
+npm i -D jest@27.5.1
 ```
 
 然后，用 `jest-cli` 初始化 `jest` 配置文件，这样就不用我们一个一个去文档找了：
