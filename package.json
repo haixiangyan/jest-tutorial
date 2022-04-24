@@ -4,6 +4,7 @@
   "description": "🃏《Jest 前端测试速通指南》",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },

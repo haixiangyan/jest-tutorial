@@ -37,7 +37,9 @@ module.exports = {
       {
         title: "基础实战",
         collapsable: false,
-        children: [],
+        children: [
+          "/basic/getting-started/"
+        ],
       },
       {
         title: "技巧方法",
