@@ -71,7 +71,7 @@ npx tsc --init
 }
 ```
 
-现在安装 [ts-jest](https://www.npmjs.com/package/ts-jest) ：
+现在安装 [ts-jest](https://kulshekhar.github.io/ts-jest/) ：
 
 ```shell
 npm i -D ts-jest@27.1.4
