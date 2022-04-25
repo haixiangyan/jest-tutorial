@@ -1,6 +1,6 @@
 module.exports = {
   base: "/jest-tutorial/",
-  title: "深入浅出 Jest",
+  title: "Jest 实践指南",
   description: "从基础实战到测试思维，带你全面了解和掌握前端测试",
   head: [
     [

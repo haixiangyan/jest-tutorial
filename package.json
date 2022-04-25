@@ -1,7 +1,7 @@
 {
   "name": "jest-tutorial",
   "version": "1.0.0",
-  "description": "🃏《Jest 前端测试速通指南》",
+  "description": "🃏《Jest 实践指南》",
   "main": "index.js",
   "scripts": {
     "test": "jest",
