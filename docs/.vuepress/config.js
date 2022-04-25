@@ -38,7 +38,9 @@ module.exports = {
         title: "基础实战",
         collapsable: false,
         children: [
-          "/basic/getting-started/"
+          "/basic/getting-started/",
+          "/basic/typescript/",
+          "/basic/storage/"
         ],
       },
       {
