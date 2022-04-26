@@ -1,4 +1,4 @@
-# Jest 环境
+# 测试环境
 
 刚刚的 `sum` 实在是太简单了，现在我们来搞点难度。很多时候，我们前端开发写的代码往往只在浏览器里运行，比如我之前就封装过一个 `storage` 文件，
 通过一个 `type = 'indexedDB' | 'cookoie' | 'localStorage'` 来切换存储的地方，同是还可以生成自定义的 `key`，防止全局污染。
@@ -93,9 +93,9 @@ module.exports = {
 
 ![](./storage-setup-success.png)
 
-## jsdom 环境
+## jsdom 测试环境
 
-但是这样有点傻，因为我们不可能把浏览器里所有的 API 都 Mock 一遍，所以 `jest` 提供了 `environment` 这个配置项：
+但是这样有点傻，因为我们不可能把浏览器里所有的 API 都 Mock 一遍，而且很多的实现我们不可能还原得一模一样，比如 `indexedDB`，所以 `jest` 提供了 `testEnvironment` 这个配置项：
 
 ```js
 module.exports = {
@@ -103,11 +103,14 @@ module.exports = {
 }
 ```
 
-配置好后，`jest` 就会在 Mock 的浏览器环境中执行你的测试用例，现在清空 `jest-setup.ts` 里的代码，直接 `npm run test` 也会发现测试成功：
+配置 `jsdom` 后，会自动拥有完整的浏览器标准 API。**这里背后的原理是使用了 [jsdom](https://github.com/jsdom/jsdom) ，
+这个库用 JS 实现了一套 Node.js 环境下的 Web 标准 API。** 我们的 `jest` 测试文件也是 Node.js 环境下执行的，所以这里 `jest` 只是用了这个库的实现充当了 Mock 实现。
+
+现在清空 `jest-setup.ts` 里的代码，直接 `npm run test` 也会发现测试成功：
 
 ![](./storage-env-success.png)
 
-那 `testEnvironment` 除了 `jsdom` 还有没有别的呢？有，但是一般都只是 `jsdom` 的扩展环境，在下一章会讲到，那现在我们就进入下一章的学习吧~
+那 `testEnvironment` 除了 `jsdom` 还有没有别的呢？有，不过一般都只是 `jsdom` 的扩展环境，在下一章会讲到，那现在我们就进入下一章的学习吧~
 
 ## 总结
 
