@@ -40,7 +40,8 @@ module.exports = {
         children: [
           "/basic/getting-started/",
           "/basic/typescript/",
-          "/basic/storage/"
+          "/basic/storage/",
+          "/basic/location/"
         ],
       },
       {

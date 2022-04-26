@@ -4,7 +4,7 @@
 通过一个 `type = 'indexedDB' | 'cookoie' | 'localStorage'` 来切换存储的地方，同是还可以生成自定义的 `key`，防止全局污染。
 **相信大家也见过不少这种和浏览器强绑定的工具文件，那我们该如何测它们呢？**
 
-## 源码和测试
+## 需求和测试
 
 添加一个 `src/utils/storage.ts` 文件，这里对我刚说的 `storage` 做下简化，只封装一个 `localStorage` 的用法，一共只有 `set` 和 `get` 两个函数：
 
