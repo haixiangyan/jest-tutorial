@@ -27,24 +27,33 @@ expect(sum(1, 1)).toEqual(2)
 
 ## 目录
 
-* 开始上手
+- [x] 开始上手
     * Jest 配置初始化
     * `expect(sum(1, 1).toEqual(2)`
     * 查看测试覆盖率
 
-* Jest x TypeScript
+- [x] Jest x TypeScript
     * 使用 `ts-jest` 进行转译
     * 使用 `paths` 在 `tsconfig.json` 配置缩写，可以业务代码中缩写
     * 使用 `moduleDirectories` 在测试代码中缩写
 
-* 测试 `storage`
+- [x] 测试 `storage`
     * 使用 `jest-environment-jsdom` 来 Mock 环境
     * 测试 `localStorage` 的使用
 
-* 测试 `getSearchObj`
+- [x] 测试 `getSearchObj`
     * 使用 `window.location`
     * 使用 `jest-environment-jsdom-global` 来 `assign` 改变 location
     * 可以尝试使用 `jest-location-mock` 来实现 Mock
+
+- [x] 使用 TDD 编写 `objToSearchStr`
+  * TDD
+
+* 测试 `sleep` 函数
+  * 使用 `act` 来编写用例
+  * 发现无法输出正确结果
+  * 解析 EventLoop
+  * 添加一行 `await promise` 来解决
 
 * 引入 React
     * 安装 React，配置 `tsx`
@@ -60,18 +69,9 @@ expect(sum(1, 1)).toEqual(2)
 * 测试 `Header` 组件
     * 通过 `Object.defineProperty` 来 Mock 不同变量
 
-* 使用 TDD 编写 `objToSearchStr`
-    * TDD
-
 * Jest 性能优化
     * `runInBand` 以及 `maxWorkers: 1`
     * 使用 `swc/jest` 替代 `ts-jest`
-
-* 测试 `sleep` 函数
-    * 使用 `act` 来编写用例
-    * 发现无法输出正确结果
-    * 解析 EventLoop
-    * 添加一行 `await promise` 来解决
 
 * 测试 `useCounter`
     * 使用真实的 `TestComponent` 来测试

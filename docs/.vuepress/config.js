@@ -41,7 +41,8 @@ module.exports = {
           "/basic/getting-started/",
           "/basic/typescript/",
           "/basic/storage/",
-          "/basic/location/"
+          "/basic/location/",
+          "/basic/tdd/",
         ],
       },
       {
