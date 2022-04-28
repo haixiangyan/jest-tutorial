@@ -2,6 +2,16 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/haixiangyan/jest-tutorial-example/badge.svg?branch=main)](https://coveralls.io/github/haixiangyan/jest-tutorial?branch=main)
 
+# ⚠️ 本小书内容正在编写中...
+
+以下内容为目前的构思，仅作为小书编写的基础材料，并非最终版本。
+
+目前更新了部分章节，不过也只是草稿状态，但是很多细节、高亮、错字还未核对，所以在阅读上可能存在不通顺的情况，请见谅。
+
+可先点 Star 订阅关注，大概会在 5 月底（或者更早）结束。公众号关注【写代码的海怪】获得最新资讯。
+
+## 前言
+
 [Jest](https://jestjs.io/) 看似很简单，就像很多博客写的那样：
 
 ```js
@@ -18,12 +28,6 @@ expect(sum(1, 1)).toEqual(2)
 从而对测试产生强大的厌恶感，进而觉得 "测试就是浪费时间"，最终放弃写测试，直接开摆。
 
 **所以，承认吧：你不是不愿意写测试，也不是测试浪费时间。真相是：你根本就不会写测试！**
-
-# ⚠️ 本小书内容正在编写中...
-
-以下内容为目前的构思，仅作为小书编写的基础材料，并非最终版本。
-
-可先点 Star 订阅关注，大概会在 5 月底（或者更早）结束。公众号关注【写代码的海怪】获得最新资讯。
 
 ## 目录
 
@@ -49,7 +53,7 @@ expect(sum(1, 1)).toEqual(2)
 - [x] 使用 TDD 编写 `objToSearchStr`
   * TDD
 
-* 测试 `sleep` 函数
+- [x] 测试 `sleep` 函数
   * 使用 `act` 来编写用例
   * 发现无法输出正确结果
   * 解析 EventLoop
