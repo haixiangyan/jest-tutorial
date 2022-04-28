@@ -43,6 +43,7 @@ module.exports = {
           "/basic/storage/",
           "/basic/location/",
           "/basic/tdd/",
+          "/basic/sleep/",
         ],
       },
       {
