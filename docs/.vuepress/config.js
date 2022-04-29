@@ -44,6 +44,7 @@ module.exports = {
           "/basic/location/",
           "/basic/tdd/",
           "/basic/sleep/",
+          "/basic/react/",
         ],
       },
       {

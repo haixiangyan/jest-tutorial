@@ -425,3 +425,7 @@ describe('sleep', () => {
 
 虽然这一章的业务代码并不多，但是如果不了解 `jest` 的 `Fake Timers` 原理以及 `Event Loop` 运行机制，我们很容易在做时间相关函数的测试时栽跟头。
 所以说，背背八股文没什么不好的，工作上不仅仅在造螺丝，还可能会造火箭。
+
+## 参考资料
+
+[Jest: Timer and Promise don't work well. (setTimeout and async function)](https://stackoverflow.com/questions/52177631/jest-timer-and-promise-dont-work-well-settimeout-and-async-function)

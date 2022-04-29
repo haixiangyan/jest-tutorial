@@ -64,6 +64,10 @@ expect(sum(1, 1)).toEqual(2)
     * 配置 Webpack，写对应的 `webpack.config.js` 配置文件
     * `alias` 要对应 `tsconfig.json` 里的 `paths`
 
+* 快照测试
+  * 优缺点
+  * 组件
+
 * 测试 `AuthButton` 组件
     * 通过 Mock `axios` 来测试
     * 通过 Mock 接口函数来测试
@@ -72,10 +76,6 @@ expect(sum(1, 1)).toEqual(2)
 
 * 测试 `Header` 组件
     * 通过 `Object.defineProperty` 来 Mock 不同变量
-
-* Jest 性能优化
-    * `runInBand` 以及 `maxWorkers: 1`
-    * 使用 `swc/jest` 替代 `ts-jest`
 
 * 测试 `useCounter`
     * 使用真实的 `TestComponent` 来测试
@@ -88,3 +88,10 @@ expect(sum(1, 1)).toEqual(2)
     * `plugin:jest/recommended`
     * `plugin:testing-library/react`
     * 解释 `plugins` 和 `extends` 的区别
+
+* Jest 性能优化
+  * `runInBand` 以及 `maxWorkers: 1`
+  * 使用 `swc/jest` 替代 `ts-jest`
+
+* Github Actions
+  * CICD
