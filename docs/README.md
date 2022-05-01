@@ -7,7 +7,7 @@
 以下内容为目前的构思，仅作为小书编写的基础材料，并非最终版本。
 
 目前更新了部分章节，不过也只是草稿状态，但是很多细节、高亮、错字还未核对，所以在阅读上可能存在不通顺的情况，请见谅。
-
+ 
 可先点 Star 订阅关注，大概会在 5 月底（或者更早）结束。公众号关注【写代码的海怪】获得最新资讯。
 
 ## 前言
@@ -30,6 +30,13 @@ expect(sum(1, 1)).toEqual(2)
 **所以，承认吧：你不是不愿意写测试，也不是测试浪费时间。真相是：你根本就不会写测试！**
 
 ## 目录
+
+* 小书介绍
+* 测试的价值
+* 测试的分类
+* 基础知识 ?
+
+### 实战
 
 - [x] 开始上手
     * Jest 配置初始化
@@ -59,33 +66,37 @@ expect(sum(1, 1)).toEqual(2)
   * 解析 EventLoop
   * 添加一行 `await promise` 来解决
 
-* 引入 React
+- [x] 引入 React
     * 安装 React，配置 `tsx`
     * 配置 Webpack，写对应的 `webpack.config.js` 配置文件
     * `alias` 要对应 `tsconfig.json` 里的 `paths`
 
-* 快照测试
+- [x] 快照测试
   * 优缺点
   * 组件
 
-* 测试 `AuthButton` 组件
+- [x] 测试 `AuthButton` 组件
     * 通过 Mock `axios` 来测试
     * 通过 Mock 接口函数来测试
     * 通过 `msw` Mock HTTP 请求来测试（更优）
     * 使用 `setup` 函数进行代码抽象
 
 * 测试 `Header` 组件
-    * 通过 `Object.defineProperty` 来 Mock 不同变量
+    * 介绍普通 Mock
+    * Mock 普通函数 `getEnv()`
+    * Mock 对象属性 `config.env`
+    * Mock 变量 `env`
+    * 其它的 Mock
 
 * 测试 `useCounter`
-    * 使用真实的 `TestComponent` 来测试
-    * 使用虚拟的 `component`，放在 `setup` 函数中测试
-    * 使用 `@testing-library/react-hooks` 来测试
-    * 解释版本问题
+  * 使用真实的 `TestComponent` 来测试
+  * 使用虚拟的 `component`，放在 `setup` 函数中测试
+  * 使用 `@testing-library/react-hooks` 来测试
+  * 解释版本问题
 
 * ESLint
-    * `plugin:@typescript-eslint/recommended`
-    * `plugin:jest/recommended`
+  * `plugin:@typescript-eslint/recommended`
+  * `plugin:jest/recommended`
     * `plugin:testing-library/react`
     * 解释 `plugins` 和 `extends` 的区别
 
@@ -95,3 +106,21 @@ expect(sum(1, 1)).toEqual(2)
 
 * Github Actions
   * CICD
+
+* 真实实战
+
+### 翻译好文
+
+* 前端测试一共有几种
+* 为什么要多写集成测试
+* 为什么不要测代码细节
+* 测试代码为什么不要嵌套变量
+* 为什么不要 Mock Fetch
+* TDD 的 3 个适用场景
+* 使用 React Testing Library 的 15 个常见错误
+* 测试中 3 个常见错误
+* 如何测 React Hooks
+* 如何测 render Props
+* 如何把测试带入团队
+* 前端测试应该测什么
+* 如何有效地抽象测试代码
