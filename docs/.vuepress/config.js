@@ -45,6 +45,7 @@ module.exports = {
           "/basic/tdd/",
           "/basic/sleep/",
           "/basic/react/",
+          "/basic/snapshot/",
         ],
       },
       {
