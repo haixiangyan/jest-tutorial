@@ -46,7 +46,7 @@ module.exports = {
           "/basic/sleep/",
           "/basic/react/",
           "/basic/snapshot/",
-          "/basic/component/",
+          "/basic/component-test/",
         ],
       },
       {
