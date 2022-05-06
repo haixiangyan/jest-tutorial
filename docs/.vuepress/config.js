@@ -47,7 +47,8 @@ module.exports = {
           "/basic/config-react/",
           "/basic/snapshot/",
           "/basic/component-test/",
-          "/basic/how-to-mock/"
+          "/basic/how-to-mock/",
+          "/basic/redux-test/"
         ],
       },
       {
