@@ -301,6 +301,62 @@ describe("AuthButton Mock Axios", () => {
 那还有没有别的方法呢？当然有！我们可以不 Mock 任何函数实现，我们只对 Http 请求进行 Mock！先安装 [msw](https://github.com/mswjs/msw) ，
 这个库可以拦截所有 Http 请求，有点类似 [Mock.js](http://mockjs.com/) ，是做测试时一个非常强大好用的 Mock 工具。
 
+我们先在 `tests/mockServer/handlers.ts` 里添加 Http 请求的 Mock Handler：
+
+```ts
+import { rest } from "msw";
+
+const handlers = [
+  rest.get("https://mysite.com/api/role", async (req, res, ctx) => {
+    res(
+      ctx.status(200),
+      ctx.json({
+        userType: "user",
+      })
+    );
+  }),
+];
+
+export default handlers;
+```
+
+然后在 `tests/mockServer/server.ts` 里使用这些 `handlers` 来创建 Mock Server 并导出它：
+
+```ts
+import { setupServer } from "msw/node";
+import handlers from "./handlers";
+
+const server = setupServer(...handlers);
+
+export default server;
+```
+
+最后，在我们的 `tests/jest-setup.ts` 里使用 Mock Server：
+
+```ts
+import server from "./mockServer/server";
+
+beforeAll(() => {
+  server.listen();
+});
+
+afterEach(() => {
+  server.resetHandlers();
+});
+
+afterAll(() => {
+  server.close();
+});
+
+// Mock console.xxx
+jest.spyOn(console, "log").mockImplementation();
+jest.spyOn(console, "warn").mockImplementation();
+jest.spyOn(console, "error").mockImplementation();
+```
+
+这样一来，在所有测试用例中都能 Mock `handlers.ts` 里的 Http 请求了。而如果你想在某个测试文件中写它独特的 Mock Handler，
+可以使用 `server.use(mockHandler)` 来实现：
+
 ```tsx
 // tests/components/AuthButton/mockHttp.test.tsx
 // 更偏向真实用例，效果更好
