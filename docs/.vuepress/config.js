@@ -49,7 +49,8 @@ module.exports = {
           "/basic/component-test/",
           "/basic/how-to-mock/",
           "/basic/redux-test/",
-          "/basic/hook-test/"
+          "/basic/hook-test/",
+          "/basic/static-tool/"
         ],
       },
       {
