@@ -51,6 +51,8 @@ module.exports = {
 
 ![单线程]()
 
+**注意：我试了一下在以前的 Intel Mac 里单线程耗时只有多线程的一半，而 M1 的 Mac 上则是相反。所以，还是要自己的机器的情况来决定使用多少个 Worker。**
+
 ## 文件转译
 
 最后一个可优化点就是转译速度（图中第 11 步）。需要注意的是 Jest 是会边执行测试用例边转译 JavaScript。
@@ -106,9 +108,9 @@ module.exports = {
 
 大功告成，配置非常简单，我们来看看使用 `ts-jest` 以及 `@swc/jest` 两者的对比：
 
-![ts-jest]()
+![ts-jest](./ts-jest.png)
 
-![@swc/jest]()
+![@swc/jest](./swc.png)
 
 ## 总结
 
