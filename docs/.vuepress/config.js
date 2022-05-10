@@ -51,6 +51,7 @@ module.exports = {
           "/basic/redux-test/",
           "/basic/hook-test/",
           "/basic/static-tool/",
+          "/basic/performance/",
           "/basic/automation/",
         ],
       },
