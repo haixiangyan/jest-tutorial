@@ -98,6 +98,14 @@ jobs:
 
 再次把代码推到 `main` 分支，等上一会，就可以在 [Coveralls 项目列表页](https://coveralls.io/repos) 看到你的测试覆盖率情况了。
 
+一旦把测试报告推到 Coveralls，你可以在项目详情页处找到这个 Badge：
+
+![](./badge.png)
+
+点击 `embed` 可以看到有多种嵌入方法，一般会把这个 Badge 放到 `README.md`，让项目看起来更有逼格：
+
+[![Coverage Status](https://coveralls.io/repos/github/haixiangyan/jest-tutorial-example/badge.svg?branch=main)](https://coveralls.io/github/haixiangyan/jest-tutorial-example?branch=main)
+
 ## 总结
 
 这一章我们学会了如何配置 Github Actions，在每次推代码和合并 PR 时自动跑测试。同时通过 `coverallsapp/github-action@master` 组件把测试覆盖率报告发给 Coveralls，将测试情况可视化。
