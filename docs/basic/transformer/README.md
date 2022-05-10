@@ -1,4 +1,4 @@
-# TypeScript
+# 转译器
 
 如今 2022 年，无论我们是写业务代码还是测试代码，都会用比较高级的 JavaScript 语法，甚至是 TypeScript。而 `jest` 本身不会做代码转译工作，
 在执行测试时，它会调用别人的 **转译器/编译器** 来做代码转译。在前端，我们最熟悉的两个转译器就是 [Babel](https://babeljs.io/) 以及 [TSC](https://www.typescriptlang.org/) 了。
