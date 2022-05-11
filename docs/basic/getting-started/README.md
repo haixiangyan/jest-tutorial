@@ -18,21 +18,24 @@ npm init -y
 npm i -D jest@27.5.1
 ```
 
-> 目前 Jest 已经来到 28 版本了，但是我在实践中发现 `Jest@28` 和 `react@18` 以及 `@testing-library/react` 一起使用时会有冲突，所以建议大家跟着我使用稳定的版本。
+::: warning
+目前 Jest 已经来到 28 版本了，但是我在实践中发现 `Jest@28` 和 `react@18` 以及 `@testing-library/react` 一起使用时会有冲突，建议大家跟着我使用 **稳定** 的版本。
+:::
 
-然后，用 `jest-cli` 初始化 `jest` 配置文件，这样就不用我们一个一个去文档找了：
+安装 Jest 后，用 `jest-cli` 初始化 `jest` 配置文件：
 
 ```shell
 npx jest --init
 ```
 
-第一次初始化 Jest，可能会有点纠结，可以先按我下面的来选择，只打开覆盖率和自动清除 Mock，别的以后再说：
+初始化配置文件时，Jest 会问你一堆问题，可以先按我下面的图来选择（只打开覆盖率和自动清除 Mock），别的以后再说：
 
-![](jest-config.png)
+![](./jest-config.png)
 
 执行完之后，就会看到有一个 `jest.config.js` 的配置文件：
 
 ```shell
+// jest.config.js
 module.exports = {
   // 自动清除 Mock
   clearMocks: true,
@@ -48,13 +51,16 @@ module.exports = {
 };
 ```
 
-> 建议不要犯了强迫症把 `jest.config.js` 的注释去掉，它们可以作为配置 Jest 时的简单版文档。
+::: tip
+建议不要犯了强迫症把 `jest.config.js` 的注释去掉，它们可以作为配置 Jest 时的简单版文档。
+:::
 
 ## 第一个测试
 
-有了配置后，添加一个工具函数文件 `src/utils/sum.js`，这个就好比我们真实项目中的一个工具函数：
+有了基本配置后，添加一个工具函数文件 `src/utils/sum.js` 作为我们第一个业务文件：
 
 ```js
+// src/utils/sum.js
 const sum = (a, b) => {
   return a + b;
 }
@@ -62,9 +68,10 @@ const sum = (a, b) => {
 module.exports = sum;
 ```
 
-然后添加我们第一个测试用例 `tests/utils/sum.test.js`：
+然后，添加我们项目的第一个测试用例 `tests/utils/sum.test.js`：
 
 ```js
+// tests/utils/sum.test.js
 const sum = require("../../src/utils/sum");
 
 describe('sum', () => {
@@ -74,7 +81,7 @@ describe('sum', () => {
 })
 ```
 
-目前项目结构如下：
+项目结构如下：
 
 ```
 ├── jest.config.js
@@ -90,7 +97,7 @@ describe('sum', () => {
 
 ## 开始测试
 
-一切就绪，我们执行以下命令启动我们第一个测试用例了：
+一切就绪，执行以下命令启动测试：
 
 ```shell
 # npx jest
@@ -99,35 +106,37 @@ npm run test
 
 执行结果如下：
 
-![](test-result.png)
+![](./test-result.png)
 
-大功告成！
+**🎉 成功 🎉**
 
 ## 查看覆盖率
 
 上面终端里展示的就是覆盖率情况，只不过以终端的形式展示。现在我们打开根目录下的 `coverage` 目录，会发现生成很多覆盖率文件：
 
 ```
-├── clover.xml # Clover XML 格式的覆盖率报告
-├── coverage-final.json # JSON 格式的覆盖率报告
-├── lcov-report # HTML 格式的覆盖率报告
+├── clover.xml             # Clover XML 格式的覆盖率报告
+├── coverage-final.json     # JSON 格式的覆盖率报告
+├── lcov-report            # HTML 格式的覆盖率报告
 │   ├── base.css
 │   ├── block-navigation.js
 │   ├── favicon.png
-│   ├── index.html # 覆盖率根文件
+│   ├── index.html         # 覆盖率根文件
 │   ├── prettify.css
 │   ├── prettify.js
 │   ├── sort-arrow-sprite.png
 │   ├── sorter.js
-│   └── sum.js.html # 我们 sum.js 的覆盖率
+│   └── sum.js.html        # sum.js 的覆盖率情况
 └── lcov.info
 ```
 
-一般来说，`coverage` 都会存放很多不同种格式的覆盖率报告文件，有 XML，JSON，也有 HTML 网页的。本质上它们描述的测试报告是一样的，只是为了方便不同工具的读取而生成不一样的覆盖率格式。
-毕竟有些工具适合处理 JSON，有的适合处理 XML，而对我们人类来说，看图说话肯定是最简单的。所以，我们可以打开 `lcov-report/index.html` 就可以看到非常清晰的测试覆盖率了：
+Jest 会在 `coverage` 目录下生成各种不同格式的覆盖率报告文件，有 XML，JSON，也有 HTML 网页的。它们描述的报告内容是一样的，不同格式只是为了方便不同工具的读取，
+比如 JS 读 JSON 就比读 XML 容易。
 
-![](coverage.png)
+无论哪种格式，我们都很难直观地看懂。因此，Jest 也支持生成网页的测试报告，打开 `lcov-report/index.html` 就可以看到网页版的测试报告了：
+
+![](./coverage.png)
 
 ## 总结
 
-到此，你已经编写并测试了你第一个测试用例了。然而，前面还有很多问题等着我们解决呢，马上去看下一章吧。
+到此，你已经成功编写并测试了第一个测试用例。然而，这只是开始，后面还有很多问题等着我们解决，马上去看下一章吧。
