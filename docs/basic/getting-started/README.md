@@ -52,7 +52,7 @@ module.exports = {
 ```
 
 ::: tip
-建议不要犯了强迫症把 `jest.config.js` 的注释去掉，它们可以作为配置 Jest 时的简单版文档。
+建议不要犯了强迫症把 `jest.config.js` 的注释去掉，它们可以作为配置 Jest 的简单版文档。
 :::
 
 ## 第一个测试
@@ -116,7 +116,7 @@ npm run test
 
 ```
 ├── clover.xml             # Clover XML 格式的覆盖率报告
-├── coverage-final.json     # JSON 格式的覆盖率报告
+├── coverage-final.json    # JSON 格式的覆盖率报告
 ├── lcov-report            # HTML 格式的覆盖率报告
 │   ├── base.css
 │   ├── block-navigation.js
@@ -130,8 +130,8 @@ npm run test
 └── lcov.info
 ```
 
-Jest 会在 `coverage` 目录下生成各种不同格式的覆盖率报告文件，有 XML，JSON，也有 HTML 网页的。它们描述的报告内容是一样的，不同格式只是为了方便不同工具的读取，
-比如 JS 读 JSON 就比读 XML 容易。
+Jest 会在 `coverage` 目录下生成各种不同格式的覆盖率报告文件，有 `XML`，`JSON`，也有 `HTML` 的。生成这么多不同格式的测试报告只只是为了方便不同工具的读取，
+比如 JS 读 JSON 就比读 XML 容易，它们描述的内容都是一样的。
 
 无论哪种格式，我们都很难直观地看懂。因此，Jest 也支持生成网页的测试报告，打开 `lcov-report/index.html` 就可以看到网页版的测试报告了：
 
@@ -139,4 +139,6 @@ Jest 会在 `coverage` 目录下生成各种不同格式的覆盖率报告文件
 
 ## 总结
 
-到此，你已经成功编写并测试了第一个测试用例。然而，这只是开始，后面还有很多问题等着我们解决，马上去看下一章吧。
+这一章里，我们创建了新项目，并成功编写并测试了第一个测试用例。
+
+然而，这只是开始，后面还有很多问题等着我们解决，马上去看下一章吧。
