@@ -21,7 +21,6 @@ module.exports = {
   themeConfig: {
     logo: "/images/logo.png",
     repo: "https://github.com/haixiangyan/jest-tutorial",
-    lastUpdated: true,
     nav: [
       {
         text: "Issue",
@@ -66,5 +65,13 @@ module.exports = {
         children: [],
       },
     ],
+
+    // 搜索
+    search: true,
+    searchMaxSuggestions: 10,
+    lastUpdated: "最后更新",
   },
+
+  // PWA 配置
+  serviceWorker: true,
 };
