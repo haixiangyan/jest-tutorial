@@ -20,7 +20,7 @@
 npm i axios@0.26.1
 ```
 
-然后添加 `src/apis/users.ts`，里面写获取用户角色身份的请求：
+然后添加 `src/apis/user.ts`，里面写获取用户角色身份的请求：
 
 ```ts
 import axios from "axios";
@@ -225,6 +225,8 @@ describe('AuthButton', () => {
 
 上面只是让我们跑通 `jest` 的组件测试，现在我们来测这个组件的功能。
 
+### Mock Axios
+
 相信大家看过不少教 `jest` Mock 的文章，很多文章用的第一个例子就是 Mock `axios`，我们这里也来试试看，添加 `tests/components/AuthButton/mockAxios.test.tsx`：
 
 ```tsx
@@ -259,6 +261,8 @@ describe("AuthButton Mock Axios", () => {
   });
 });
 ```
+
+### Mock API 函数
 
 上面我们把 `axios` 的 `get` 函数给 Mock 了，在两个用例中，一个 Mock 返回 `user`，另一个 Mock 返回 `admin`。这样这么确实能让测试通过，但只有这种方法么？No！
 我们还能把 `apis/user.ts` 里的 `getUserRole` 给 Mock 了，一样能达到相同的效果：
@@ -298,7 +302,14 @@ describe("AuthButton Mock Axios", () => {
 });
 ```
 
-那还有没有别的方法呢？当然有！我们可以不 Mock 任何函数实现，我们只对 Http 请求进行 Mock！先安装 [msw](https://github.com/mswjs/msw) ，
+### Mock Http
+
+那还有没有别的方法呢？当然有！我们可以不 Mock 任何函数实现，我们只对 Http 请求进行 Mock！先安装 [msw](https://github.com/mswjs/msw) ：
+
+```shell
+npm i -D msw
+```
+
 这个库可以拦截所有 Http 请求，有点类似 [Mock.js](http://mockjs.com/) ，是做测试时一个非常强大好用的 Mock 工具。
 
 我们先在 `tests/mockServer/handlers.ts` 里添加 Http 请求的 Mock Handler：
@@ -347,11 +358,6 @@ afterEach(() => {
 afterAll(() => {
   server.close();
 });
-
-// Mock console.xxx
-jest.spyOn(console, "log").mockImplementation();
-jest.spyOn(console, "warn").mockImplementation();
-jest.spyOn(console, "error").mockImplementation();
 ```
 
 这样一来，在所有测试用例中都能 Mock `handlers.ts` 里的 Http 请求了。而如果你想在某个测试文件中写它独特的 Mock Handler，

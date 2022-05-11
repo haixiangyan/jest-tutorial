@@ -18,6 +18,8 @@ npm init -y
 npm i -D jest@27.5.1
 ```
 
+> 目前 Jest 已经来到 28 版本了，但是我在实践中发现 `Jest@28` 和 `react@18` 以及 `@testing-library/react` 一起使用时会有冲突，所以建议大家跟着我使用稳定的版本。
+
 然后，用 `jest-cli` 初始化 `jest` 配置文件，这样就不用我们一个一个去文档找了：
 
 ```shell
@@ -45,6 +47,8 @@ module.exports = {
   coverageProvider: "v8",
 };
 ```
+
+> 建议不要犯了强迫症把 `jest.config.js` 的注释去掉，它们可以作为配置 Jest 时的简单版文档。
 
 ## 第一个测试
 
@@ -89,10 +93,9 @@ describe('sum', () => {
 一切就绪，我们执行以下命令启动我们第一个测试用例了：
 
 ```shell
-npx jest
+# npx jest
+npm run test
 ```
-
-或者可以在 `package.json` 的 `scripts` 里添加一行 `"test": "jest"`，再执行 `npm run test`。
 
 执行结果如下：
 

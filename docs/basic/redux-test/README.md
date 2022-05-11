@@ -143,34 +143,6 @@ export default store;
 
 现在我们的全局状态已经准备好了，下面来实现页面吧。
 
-### 配置别名
-
-在引用 `src/store` 的内容前，需要配置一下 `webpack.config.js` 和 `tsconfig.json` 里的别名：
-
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    "paths": {
-      "store/*": ["src/store/*"]
-    }
-  }
-}
-```
-
-```js
-// webpack.config.js
-module.exports = {
-  // ...
-  resolve: {
-    alias: {
-      // ...
-      store: path.join(__dirname, "src/store/"),
-    }
-  },
-};
-```
-
 ### 页面展示
 
 首先，在 `src/components/User/index.tsx` 里添加展示用户信息的组件：

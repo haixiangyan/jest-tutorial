@@ -82,6 +82,7 @@ module.exports = {
       components: path.join(__dirname, 'src/components/'),
       apis: path.join(__dirname, 'src/apis/'),
       hooks: path.join(__dirname, 'src/hooks/'),
+      store: path.join(__dirname, 'src/store/'),
     }
   },
   devtool: 'inline-source-map',
@@ -168,14 +169,15 @@ export default App;
 ```json
 {
   "compilerOptions": {
-    // ...
     "jsx": "react",
+    "baseUrl": "./",
     "paths": {
       "utils/*": ["src/utils/*"],
       "components/*": ["src/components/*"],
       "apis/*": ["src/apis/*"],
-      "hooks/*": ["src/hooks/*"]
-    },   
+      "hooks/*": ["src/hooks/*"],
+      "store/*": ["src/store/*"]
+    } 
   }
 }
 ```

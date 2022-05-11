@@ -131,7 +131,7 @@ module.exports = class JSDOMEnvironmentGlobal extends JSDOMEnvironment {
 
 上面这段代码继承了原来的 `JSDOMEnvironment` 的测试环境，在构造器里把 `jsdom` 绑定到了全局对象上。
 
-当然这段代码不用我们自己写了，有人已经把它变成了一个 NPM 包了：[jest-environment-jsdom-global](https://github.com/simon360/jest-environment-jsdom-global) 。
+当然，我们不用自己写这段代码，有人已经把它变成了一个 NPM 包了：[jest-environment-jsdom-global](https://github.com/simon360/jest-environment-jsdom-global) 。
 我们来安装一下：
 
 ```shell
@@ -181,9 +181,10 @@ describe("getSearchObj", () => {
 
 ![](./jsdom-global-ts.png)
 
-所以，我们还要添加一个全局声明文件 `src/types/global.ts`：
+所以，我们还要添加一个全局声明文件 `src/types/global.d.ts`：
 
 ```ts
+// src/types/global.d.ts
 declare namespace globalThis {
   var jsdom: any;
 }
@@ -256,6 +257,8 @@ describe("getSearchObj", () => {
 通过 `jsdom` 的 `reconfigure` API 来修改 JSDOM 环境的 `url`。
 
 第二种方法使用 [jest-location-mock](https://www.npmjs.com/package/jest-location-mock) 。这种方法会监听 `window.location.assign`，通过它来改变网页地址。
+
+这两种方法任君选择，我会比较推荐使用 `jest-locatin-mock`，这会简单一点。
 
 如何在测试中修改网页地址是前端测试中非常常见的一个问题，在中文社区里几乎好的回答，很多还停留在 `Object.defineProperty`，而这个方法早在 `jest@21.x` 的版本就用不了了。
 因此觉得有必要开一章告诉大家正确修改 `window.location.href` 的方法。同时在这一章里，也给大家展示了如何通过继承 `jsdom` 环境来扩展成自己想要的测试环境。

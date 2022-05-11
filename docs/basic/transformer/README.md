@@ -7,6 +7,8 @@
 
 ## Babel 转译
 
+> 本教程会使用第二个方法：使用 `ts-jest` 来转译，下面权当了解就好。
+
 目前我在写 TypeScript 时，用 Babel 不是很多，这里我就直接搬运 [官网的教程](https://jestjs.io/docs/getting-started#using-typescript-via-babel) 了：
 
 ```shell
@@ -77,11 +79,14 @@ npx tsc --init
 npm i -D ts-jest@27.1.4
 ```
 
-再在 `jest.config.js` 里添加一行配置：
+> **注意，这里 `ts-jest` 一定要和 `jest` 的大版本一致！比如 27 对 27，或者 26 对 26，否则会有兼容问题！**
+
+在 `jest.config.js` 里添加一行配置：
 
 ```js
 module.exports = {
   preset: 'ts-jest',
+  // ...
 };
 ```
 
@@ -119,6 +124,8 @@ describe('sum', () => {
 ```shell
 npm i -D @types/jest@27.4.1
 ```
+
+> 同时地，TS 声明类型包的大版本最好和 `jest` 一样。
 
 然后在 `tsconfig.json` 里加上 `jest` 和 `node` 类型声明：
 
@@ -163,7 +170,8 @@ npm i -D @types/jest@27.4.1
 ```js
 // jest.config.js
 module.exports = {
-  moduleDirectories: ["node_modules", "src"]
+  moduleDirectories: ["node_modules", "src"],
+  // ...
 }
 ```
 

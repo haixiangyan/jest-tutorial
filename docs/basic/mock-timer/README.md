@@ -9,7 +9,7 @@
 ```ts
 type AnyFunction = (...args: any[]) => any;
 
-const after1000ms = (callback: AnyFunction) => {
+const after1000ms = (callback?: AnyFunction) => {
   console.log("准备计时");
   setTimeout(() => {
     console.log("午时已到");
@@ -93,10 +93,39 @@ describe("after1000ms", () => {
 这次的用例中，我们用 `jest.fn` 生成了一个监听函数（假函数），然后马上断言这个函数是没有被调用过的。
 调用了 `after1000ms` 之后用 `jest.runAllTimers` 快进所有时间，最终判断 `callback` 是否只被调用了 1 次。
 
-虽然这个测试用例也成功了，但是这次的不安感更强烈了，**实际上，我们并不清楚这里的 `Fake Timer` 到底 `Fake` 在什么地方，也不知道这段代码在时间上的调用顺序是怎样的。
-我们只是很直观地认为 `执行 -> 快进 -> 断言` 是合理的，但这并没有理论依据支撑这样的现实，导致我们不敢用 Fake Timers！**
+## Mock Logger
+
+中间插一个知识点，我们会发现在跑测试用例时，控制台里打印了很多冗余信息：
+
+![](./log.png)
+
+这在调试时比较有用，但是不利于真实跑测试的场景。举个例子，如果工具函数里有 `console.error('debug')`，那么在 CI 跑测试时就会生成很多干扰的报错信息。
+因此，我们在写测试时应该要把 Logger 给 Mock 掉。
+
+你可以选择在 `tests/jest-setup.ts` 里手动 Mock `console.xxx`：
+
+```ts
+// tests/jest-setup.ts
+jest.spyOn(console, 'log').mockReturnValue();
+jest.spyOn(console, 'info').mockReturnValue();
+jest.spyOn(console, 'warn').mockReturnValue();
+jest.spyOn(console, 'error').mockReturnValue();
+```
+
+或者可以选择使用 [jest-mock-console](https://www.npmjs.com/package/jest-mock-console) 这个库，同样在 `jest-setup.ts` 里引入并使用它：
+
+```ts
+import mockConsole from "jest-mock-console";
+
+mockConsole()
+```
+
+这两个方法效果差不多，`jest-mock-console` 功能更强大一些，大家按自己喜好来选择就好。
 
 ## Fake Timers 机制的猜测
+
+虽然这个测试用例也成功了，但是这次的不安感更强烈了，**实际上，我们并不清楚这里的 `Fake Timer` 到底 `Fake` 在什么地方，也不知道这段代码在时间上的调用顺序是怎样的。
+我们只是很直观地认为 `执行 -> 快进 -> 断言` 是合理的，但这并没有理论依据支撑这样的现实，导致我们不敢用 Fake Timers！**
 
 不过通过上面这个用例，我们多少能猜得出：`jest` **好像** 会用一个数组记录 `callback`，然后在 `jest.runAllTimers` 时把数组里的 `callback` 都执行，
 伪代码可能是这样的：
@@ -162,9 +191,10 @@ await sleep(1000); // 睡 1 秒
 console.log('结束'); // 睡醒
 ```
 
-在写测试时，我们可以写一个内置 `act` 函数来构造这样的使用场景：
+添加 `tests/utils/sleep.test.ts`，在写测试时，我们可以写一个内置 `act` 函数来构造这样的使用场景：
 
 ```ts
+// tests/utils/sleep.test.ts
 import sleep from "utils/sleep";
 
 describe('sleep', () => {
@@ -320,6 +350,7 @@ test('执行顺序', async () => {
 对于第一种写法，我们使用了语法糖 `await`，也可以写成这样：
 
 ```ts
+// tests/utils/sleep.test.ts
 describe('sleep', () => {
   beforeAll(() => {
     jest.useFakeTimers();
@@ -356,6 +387,7 @@ describe('sleep', () => {
 对于第二种写法，我们也可以简化成如下代码：
 
 ```ts
+// tests/utils/sleep.test.ts
 describe('sleep', () => {
   beforeAll(() => {
     jest.useFakeTimers();
@@ -392,6 +424,7 @@ describe('sleep', () => {
 要解决也很简单，我们只需要在第一种写法里，把最后一个 `expect` 放到 `Promise Job Queue` 最后就可以了：
 
 ```ts
+// tests/utils/sleep.test.ts
 import sleep from "utils/sleep";
 
 describe('sleep', () => {

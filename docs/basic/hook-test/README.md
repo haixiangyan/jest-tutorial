@@ -114,6 +114,12 @@ describe("useCounter", () => {
 
 ## 测试组件
 
+安装 [@testing-library/user-event](https://www.npmjs.com/package/@testing-library/user-event) ，用于处理点击事件：
+
+```shell
+npm i -D @testing-library/user-event
+```
+
 添加 `tests/hooks/useCounter/TestComponent.test.tsx`：
 
 ```tsx
@@ -271,7 +277,13 @@ describe("useCounter", () => {
 
 ## renderHook
 
-基于这样的想法，`@testing-library/react` 上面的步骤封装成了一个公共函数 `renderHook`。你要做的就是在回调中使用 `useCounter` 就可以了：
+基于这样的想法，`@testing-library/react-hooks` 把上面的步骤封装成了一个公共函数 `renderHook`：
+
+```shell
+npm i -D @testing-library/react-hooks
+```
+
+你要做的就是在回调中使用 `useCounter` 就可以了：
 
 ```tsx
 // tests/hooks/useCounter/renderHook.test.ts
@@ -341,7 +353,11 @@ describe("useCounter", () => {
 
 实际上 `renderHook` 只是第二种方法 `setupTestComponent` 的高度封装而已，更通用的方法依然是 `setupTestComponent`。
 
-这里我来再举一个更复杂的例子：
+这里我来再举一个更复杂的例子：`useQuery`。先安装必需的 NPM 包：
+
+```shell
+npm i -D react-router-dom
+```
 
 ```ts
 import React from "react";
@@ -378,6 +394,7 @@ const component = () => {
 所以我们得在测试组件中通过 `createMemoryHistory` 这个 API 来创造 React Router 的环境：
 
 ```tsx
+// tests/hooks/useQuery.test.ts
 import React from "react";
 import useQuery from "hooks/useQuery";
 import { createMemoryHistory, InitialEntry } from "history";

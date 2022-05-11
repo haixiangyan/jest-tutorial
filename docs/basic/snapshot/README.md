@@ -8,6 +8,7 @@
 我们在 `src/components/Title.tsx` 写一个 `Title` 组件：
 
 ```tsx
+// src/components/Title.tsx
 import React, { CSSProperties, FC } from "react";
 
 interface Props {

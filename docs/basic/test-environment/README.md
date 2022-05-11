@@ -76,11 +76,13 @@ Object.defineProperty(global, 'localStorage', {
 })
 ```
 
+> 得益于刚刚配置的 TypeScript，这里的 setup 文件也可以写成 `.ts` 了！
+
 然后在 `jest.config.js` 里添加 `setupFilesAfterEnv` 配置：
 
 ```js
 module.exports = {
-  setupFilesAfterEnv: ['./tests/jest.setup.ts'],
+  setupFilesAfterEnv: ['./tests/jest-setup.ts'],
 };
 ```
 
@@ -109,6 +111,8 @@ module.exports = {
 现在清空 `jest-setup.ts` 里的代码，直接 `npm run test` 也会发现测试成功：
 
 ![](./storage-env-success.png)
+
+> **请不要把 `jest-setup.ts` 删掉，后面还大有用处！**
 
 那 `testEnvironment` 除了 `jsdom` 还有没有别的呢？有，不过一般都只是 `jsdom` 的扩展环境，在下一章会讲到，那现在我们就进入下一章的学习吧~
 
