@@ -44,7 +44,7 @@ module.exports = {
           "/basic/tdd/",
           "/basic/mock-timer/",
           "/basic/config-react/",
-          "/basic/snapshot/",
+          "/basic/snapshot-test/",
           "/basic/component-test/",
           "/basic/how-to-mock/",
           "/basic/redux-test/",
