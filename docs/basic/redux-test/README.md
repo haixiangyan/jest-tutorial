@@ -1,23 +1,25 @@
 ## Redux 测试
 
-上一章讲了很多 Jest 的 Mock 技巧，不过，大多数情况下不是 Mock 越多越好的。前一章的 `AuthButton` 组件就是一个典型样例。我们要时刻谨记测试的最终目标：
+上一章讲了很多 Jest 的 Mock 技巧，不过，不是 Mock 越多越好的。前一章的 `AuthButton` 组件就是一个典型样例。我们要时刻谨记测试的最终目标：
 **提升代码信心。** 实现这个目标的关键要素是：**避免测试代码实现细节，要像真实用户那样去使用业务代码。**
 
-> 当你的用例越接近用户使用的样子，你从测试获得的代码的信心就越高
+::: tip
+当你的用例越接近用户使用的样子，你从测试获得的代码的信心就越高
+:::
 
-在 React 或者 Vue 开发中，我们经常会用到状态管理，比如 `redux`, `mobx`, `vuex` 等。这些库又有可能和别的库一起交互，
-比如 `redux-thunk`, `redux-saga`, `dva` 等。当状态管理加上它的衍生库，再加上复杂的业务逻辑时，整个项目会像滾雪球一样越滚越大，对单测来说是比较棘手的。
-不信可以问问自己：如果给你一个项目，你会怎么测 `redux` 相关的代码？
+在 `React` 和 `Vue` 开发中，我们经常会用到状态管理，比如 `redux`, `mobx`, `vuex` 等。而这些库又有可能和别的库一起联动，
+比如 `redux-thunk`, `redux-saga`, `dva`, `mobx` 等。当状态管理库加上它的衍生库，再加上复杂的业务逻辑时，整个项目会像滾雪球一样越滚越大，
+此时写单测真的难于登天。可以问问自己：如果给你一个项目，你会怎么测 `redux` 的相关代码？
 
-所以这一章就来讲讲 Redux 的测试思路吧，当然这个思路也能拓展到很多场景，比如 `vuex`, `dva` 等。
+所以这一章就来讲讲 Redux 的测试思路吧。
 
 ## 用户模块
 
-现在我们来实现一个用户模块，点击"获取用户"按钮，然后发请求拉取用户信息存到 `redux` 中，并展示到页面上。
+现在我们来实现一个用户模块：点击 “获取用户” 按钮，发请求拉取用户信息存到 `redux` 中，并在页面展示用户信息。
 
 ### 引入 Redux 
 
-首先，我们把需要安装的 `redux` 库都装一下：
+首先，我们来安装一下 `redux` 相关的库：
 
 ```shell
 npm i @reduxjs/toolkit@1.8.1 react-redux@8.0.1 redux@4.2.0
@@ -28,6 +30,7 @@ npm i @reduxjs/toolkit@1.8.1 react-redux@8.0.1 redux@4.2.0
 创建 `src/store` 目录，里面存放一个 `src/store/user/reducer.ts` 作为 `userSlice` 的 `reducer`：
 
 ```ts
+// src/store/user/reducer.ts
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchUserThunk } from "./thunks";
 
@@ -66,9 +69,9 @@ export const { updateUserName } = userSlice.actions;
 export default userSlice.reducer;
 ```
 
-这里我们定义了 `userSlice` 的用户信息有 ID、姓名、年龄以及加载状态。其中还有一个 `updateUserName` 的 `action` 和 `fetchUserThunk` 异步 `thunk`。
+在 `userSlice` 里定义用户信息：ID、姓名、年龄以及加载状态。其中还有一个 `updateUserName` 的 `action` 和 `fetchUserThunk` 异步 `thunk`。
 
-在 `src/store/user/thunks.ts` 里写 `fetchUserThunk` 的定义：
+在 `src/store/user/thunks.ts` 里添加 `fetchUserThunk` 的实现：
 
 ```ts
 // src/store/user/thunks.ts
@@ -99,9 +102,10 @@ export const fetchUser = async () => {
 };
 ```
 
-由于我们要在页面展示用户信息和加载状态，所以在 `src/store/user/selectors.ts` 里定义这两个 `selector`：
+由于要在页面中展示用户信息和加载状态，所以在 `src/store/user/selectors.ts` 里定义这两个 `selector`：
 
 ```ts
+// src/store/user/selectors.ts
 import { RootState } from "../index";
 
 export const selectUser = (state: RootState) => {
@@ -117,9 +121,10 @@ export const selectUser = (state: RootState) => {
 export const selectUserFetchStatus = (state: RootState) => state.user.status;
 ```
 
-最后在 `src/store/index.ts` 里把这个 `userSlice` 集合到全局状态中：
+最后在 `src/store/index.ts` 里把这个 `userSlice` 放到全局状态：
 
 ```ts
+// src/store/index.ts
 import userReducer from "./user/reducer";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
@@ -141,13 +146,14 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export default store;
 ```
 
-现在我们的全局状态已经准备好了，下面来实现页面吧。
+现在我们已经把项目的 Redux 准备好了，下面来实现页面吧。
 
 ### 页面展示
 
 首先，在 `src/components/User/index.tsx` 里添加展示用户信息的组件：
 
 ```tsx
+// src/components/User/index.tsx
 import React, { FC } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { fetchUserThunk } from "store/user/thunks";
@@ -221,14 +227,11 @@ ReactDOM.render(
 );
 ```
 
-到此，我们的 App 就实现完了。**如果你不熟悉 `redux` 以及 `@redux/toolkit` 的用法，也可以把它们当成伪代码来看，这里业务代码并不重要。
-这里并不只是说说而已，看到最后，你会发现这里的业务是真的不重要。**
+到此，我们的 App 就实现完了。**如果你不熟悉 `redux` 以及 `@redux/toolkit` 的用法，也可以把它们当成伪代码来看，业务代码不重要。**
 
 ## 单元测试
 
-现在我们来给上面的 `redux` 代码写写测试，先来看看如果用单测会是怎样的。
-
-上面 `redux` 的代码一共有两个 `selector`：
+首先，我们尝试给上面的 Redux 代码写一下单测。经过分析，上面 `redux` 的代码一共有两个 `selector`：
 * `selectUser`
 * `selectUserFetchStatus`
 
@@ -279,9 +282,9 @@ describe("selector", () => {
 });
 ```
 
-非常简单，但是这样的纯函数过于简单了，对它们来做测试有点大炮打蚊子。在真实情况下，我们可以暂时不对它们写测试，等函数变足够复杂了再做测试也不迟。
+这样的纯函数单测过于简单了，给它们上单测有点大炮打蚊子。**在真实业务中，我们可以暂时不对它们写测试，等函数变足够复杂了再做测试也不迟。**
 
-现在我们来挑战一个 `action` 的测试，首先是 `updateUserName`，在 `tests/store/user/reducer.test.ts` 添加这个 `action` 的测试用例：
+现在我们来挑战一下 `action` 的测试，首先是 `updateUserName`，在 `tests/store/user/reducer.test.ts` 添加这个 `action` 的测试用例：
 
 ```ts
 // tests/store/user/reducer.test.ts
@@ -309,13 +312,13 @@ describe("reducer", () => {
 });
 ```
 
-`reducer` 本身也是纯函数，它的作用就是改变数据状态的，所以这里我们在第一个参数传入当前状态，在第二个参数传入 `action`，
-最后 `expect` 一下返回的新状态 `currentState` 就测试完成了。
+`reducer` 本身也是纯函数，它的作用就是改变数据状态，所以这里我们在第一个参数传入当前状态，在第二个参数传入 `action`，
+最后 `expect` 一下返回的新状态 `currentState` 就完成测试了。
 
-下面来看看 `fetchUserThunk` 要怎么测。这里不仅涉及到 `redux-thunk` 中间件、API 异步函数还有 Http 请求，我们不能直接调用 `reducer` 来获取状态了。
-为了更好地测试 `thunk`，很多人发明了相关的库，比如 [redux-mock-store](https://github.com/reduxjs/redux-mock-store) ， [redux-actions-assertions](https://github.com/redux-things/redux-actions-assertions) 等。
+下面来看看 `fetchUserThunk` 的测试。它涉及到 `redux-thunk` 中间件、API 异步函数还有 Http 请求，所以我们不能直接调用 `reducer` 来做测试。
 
-我们就以 `redux-mock-store` 为例吧，先安装一下：
+为了更好地测试 `thunk`，开发者们发明了很多 NPM 包，比如 [redux-mock-store](https://github.com/reduxjs/redux-mock-store) ， [redux-actions-assertions](https://github.com/redux-things/redux-actions-assertions) 等。
+这里就以 `redux-mock-store` 为例，先安装一下：
 
 ```shell
 npm i -D redux-mock-store@1.5.4 @types/redux-mock-store@1.0.3
@@ -391,30 +394,27 @@ describe("reducer", () => {
 });
 ```
 
-上面一共做了 3 件事：
+一共做了 4 件事：
 
 * 使用 `msw` Mock Http 的返回
-* 使用 `redux-mock-store` 里的 `configureStore` 创建一个假 `store`，并加上 `redux-thunk` 中间件
-* 最后我们对这个 `action` 里的 `data.payload` 做了断言
+* 使用 `redux-mock-store` 里的 `configureStore` 创建一个假 `store`
+* 在假 `store` 里引入 `redux-thunk` 中间件
+* 最后对 `data.payload` 做了断言
 
-这也太复杂了，不仅要引入一个奇奇怪怪的库，还要做很多骚操作。在业务代码里我们可是用了 `@reduxjs/toolkit`，不需要我们手动引入 `redux-thunk` 中间件，
-而这里所有东西全要手动拼装。
+这也太复杂了，不仅要引入一个奇奇怪怪的库，还要手动创建一个假 `store`，并接入 `redux-thunk` 中间件。
 
-这样写测试最严重的问题是：**过度依赖代码实现细节！** 现在围绕 `react` 的状态管理库可不只是 `@reduxjs/toolkit`，还有 `dva`，`redux-saga`，`mobx` 等等。
-一旦不用 `redux` 的 `thunk`，改成 `generator` 或者装饰器，那直接玩完了，上面所有测试用例全要改。
+这样测试的问题是：**过度测试代码实现细节！** 现在围绕 `react` 的状态管理库可不只有 `@reduxjs/toolkit`，还有 `dva`，`redux-saga`，`mobx` 等等。
+一旦不用 `redux` 的 `thunk`，改成 `generator` 或者装饰器，那直接玩完了，上面所有测试用例全部报废。
 
-**这就是过度测试实现细节的代价！** 我们一说起前端测试，脑海里第一反应就是单测。然而，在业务代码中单测会更适合工具纯函数的测试，对于组件以及更业务的代码，集成测试使用频率更高。
-全局状态管理就是一个非常业务的模块，所以这里应该要用集成测试。
+**这就是过度测试实现细节的代价！** 全局状态管理属于一个非常偏业务的功能模块，所以这里使用集成测试更合适。
 
 ## 集成测试 
 
-集成测试的关键点有几个：
+集成测试的关键点有 2 个：
 * 像真实用户那样去和组件交互
-* 只 Mock 关键部分
+* Mock Http 请求（外部依赖）
 
-下面我们就来写一下这个 **获取用户信息功能** 的集成测试吧。
-
-首先，我们对 `React Tesitng Library` 提供的 `render` 函数改造一下：
+下面我们来实现这个功能的集成测试吧。首先，我们来改造一下 `React Tesitng Library` 提供的 `render` 函数：
 
 ```tsx
 // tests/testUtils/render.ts
@@ -449,8 +449,7 @@ const render = (ui: React.ReactElement, options: CustomRenderOptions) => {
 export default render;
 ```
 
-这个自定义 `render` 的作用就是创建一个使用 `redux` 的环境，用 `<Wrapper />` 包裹传入的业务组件，并且可以让我们决定当前 `redux` 的初始状态。
-
+自定义 `render` 的作用就是：创建一个使用 `redux` 的环境，用 `<Wrapper />` 包裹传入的业务组件，并且可以让我们决定当前 `redux` 的初始状态。
 然后在 `tests/components/User/index.test.tsx` 使用自定义的 `render` 来渲染 `<User />` 组件：
 
 ```tsx
@@ -509,32 +508,32 @@ describe("User", () => {
 });
 ```
 
-是不是看起来清爽了很多？在这个集成测试用例里只做了 4 件事：
+虽然这个集成测试做了 4 件事，但看起来清爽多了：
 
 1. Mock Http 返回
 2. 渲染 `<User />` 组件
 3. 点击按钮拉取用户信息
 4. 做断言
 
-而且这些操作没有一项是和状态管理有直接关联的，唯一有关联的只是传入的初始 `state`。也就是说不论底层的状态管理用了 `redux-saga`，还是 `dva`，
-还是 `mobx`，测试用例完全不关注，它只关注组件是否正确渲染最终结果。**而这也是真实用户的真实使用行为，即不关注代码用了什么库，只关注页面变化。**
+而且这些操作没有一项是和状态管理有直接关联的，唯一有关联的就是传入的初始 `state`。也就是说，无论底层的状态管理用了 `redux-saga`，还是 `dva`，
+还是 `mobx`，测试用例完全不关注，它只关注组件是否正确渲染最终结果。**这其实也是普通用户的使用行为，他可不关注代码用了什么库，只管页面变化。**
 
 ## 隔离 vs 集成
 
 看到这，你会发现其实我们并不是在给 Redux 代码做测试，而是对业务组件做测试！
 
-上面这个例子在 [Redux 官网的 "Writing Tests" 章节](https://redux.js.org/usage/writing-tests) 里有具体的阐述，Dan 在
-["The Evolution of Redux Testing Approaches" 的博客](https://blog.isquaredsoftware.com/2021/06/the-evolution-of-redux-testing-approaches/)
-里也详细论述了 Redux 测试的演变过程，即从 "Isolation"-style tests 转向 "Integration"-style tests。
+上面这个例子在 [Redux 官网的 《Writing Tests》 章节](https://redux.js.org/usage/writing-tests) 里有具体的阐述，Dan 在
+[《The Evolution of Redux Testing Approaches》](https://blog.isquaredsoftware.com/2021/06/the-evolution-of-redux-testing-approaches/)
+里也详细论述了 Redux 测试的演变过程，即从 Isolation-style tests（隔离式测试）转向 Integration-style tests（集成式测试）。
 
-在使用单测这种隔离式测试时，我们需要花很大精力在 Mock 上，而且有时不得不用上一些非常暴力的 Hacky 方法。因此，我们在做测试时，特别是对业务代码做测试时，
-一定要合理使用单测。某些情况下，单测甚至是无法测到一些 Case 的。
+在使用单测这种隔离式测试时，我们需要花很大精力在 Mock 上，而且有时不得不用上一些非常暴力的 Hacky 方法。因此，**我们在做测试时，特别是对业务代码做测试时，
+一定要合理使用单测。** 某些情况下，单测甚至无法测到一些边界条件。
 
 集成测试则不仅可以 **相对真实地** 模拟用户和组件的交互，而且跑得比 E2E 测试要快很多，因此一般在业务项目中用集成测试会更多一些。
 
-## get vs query vs find
+## `getBy*` vs `queryBy*` vs `findBy*`
 
-这里稍微跟大家说说 `React Testing Library` 里的 `getBy*`，`queryBy*` 以及 `findBy*` 的区别。
+上面集成测试中，我们用到了 `React Testing Library` 的查询 API，这里说说 `getBy*`，`queryBy*` 以及 `findBy*` 三者的区别。
 
 | 查询类型            | 不命中       | 1 个命中 | 多个命中 | 重试（Async/Await） |
 |-----------------|-----------|-------|------|-----------------|
@@ -549,13 +548,14 @@ describe("User", () => {
 
 总的来说就是：
 
-* 当要断言元素是否存在时，使用 `getBy...`，因为它会直接跑出测试来让测试失败
-* 当要做异步逻辑，然后再获取元素时，使用 `await findBy...`，因为它会不断寻找元素
-* 除非有特殊需求，不是很推荐使用 `queryBy...` 这个 API
+* 当要断言元素是否存在时，使用 `getBy...`，因为找不到时，它会直接抛出错误来让测试失败
+* 当要做异步逻辑，然后再获取元素时，使用 `await findBy...`，因为它会不断地寻找元素
+* 上面两种情况都不满足时，可以使用 `queryBy...` 这个 API
 
 ## 总结
 
-这一章我们学会了如何对 `redux` 的 `action` 和 `selector` 代码进行单测。同时也知道这样做单测的意义并不大，容易制造出很多冗余、维护性较差的测试用例。
-要测试 `redux` 逻辑时，更好的方法是对这个功能组件进行集成测试，不仅能测试真实用户的交互，还能保证 `redux` 逻辑的正确性。
+这一章我们学会了如何对 `redux` 的 `action` 和 `selector` 代码进行单测。同时也知道这样做测试的意义并不大，容易写出很多冗余、维护性差的测试用例。
 
-当然，对 `redux` 做单测的情况不是不存在，当你遇到非常复杂的 `action` 以及 `selector` 时，比如有复杂度较高的数据转换逻辑时，对它们做单测也是个不错的选择。
+如果要测试 Redux 代码逻辑，最好的方法是对这个功能进行集成测试，不仅能测试真实用户的交互，还能保证 Redux 代码的正确性。
+
+当然，给 Redux 代码做单测的情况不是不存在，当你遇到非常复杂的 `action` 以及 `selector` 时，单测是个不错的选择。
