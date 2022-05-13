@@ -1,13 +1,19 @@
 # 引入 React（纯配置）
 
-前面这几章都是纯函数的测试，相对来说是比较简单的，而我们平常面对更多的是 React 和 Vue 的业务代码，对于它们我们又该如何写测试呢？
+前面这几章讲的都是纯函数的测试，相对比较简单。而我们平常面对更多的是 `React` 和 `Vue` 的业务代码，对于这样的代码又该如何做测试呢？
 下面以 `React` 为例，继续我们的测试之旅。
 
-如果你是用 `Vue` 也没关系，这里的教程更多的是分享 ”测试思想“，毕竟断言 API 和库都那么几个，所以无论你是用 Vue 还是 React 都能在后面的章节里学到新知识。
+::: tip
+**如果你的技术栈是 `Vue` 也没关系，本教程更多的是想分享 **“测试思路”**，无论你是用 `Vue` 还是 `React`，都能在后面的章节里学到一样的知识。**
+:::
 
+::: warning
 **这一章主要是配置 `React` 开发环境，不涉及测试内容，所以跟着我的代码复制即可。**
+:::
 
 ## 配置 Webpack
+
+可以不使用我下面的版本，不过最好保证 React 是 17 的，小于 17 太老，大于 17 又不太稳定。
 
 ```shell
 # Webpack 依赖
@@ -21,7 +27,7 @@ npm i react@17.0.2 react-dom@17.0.2 axios@0.26.1 antd@4.19.5 classnames@2.3.1
 npm i -D @types/react@17.0.2 @types/react-dom@17.0.2
 ```
 
-在根目录添加 `webpack.config.js`：
+在根目录添加 Webpack 配置文件 `webpack.config.js`：
 
 ```js
 const path = require('path');
@@ -164,7 +170,7 @@ const App = () => {
 export default App;
 ```
 
-到这里我们的业务就完事了。接下来配置 `tsconfig.json`：
+到这里我们的业务就完事了，接下来再配置一下 `tsconfig.json`，所需要用的路径都做一下映射：
 
 ```json
 {
