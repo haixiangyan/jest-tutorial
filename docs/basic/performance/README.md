@@ -53,11 +53,11 @@ module.exports = {
 **我试了一下在以前的 Intel Mac 里单线程的速度比多线程快了一倍，而 M1 的 Mac 上则是相反，多线程比单线程快。所以，还是要自己的机器的情况来决定使用多少个 Worker。**
 :::
 
-M1 Macbook Pro，单线程：
+**M1 Macbook Pro，单线程：**
 
 ![1 个 Worker](./single-worker.png)
 
-M1 Macbook Pro，多线程：
+**M1 Macbook Pro，多线程：**
 
 ![默认 maxWorkers](./multiple-workers.png)
 
@@ -118,11 +118,11 @@ module.exports = {
 
 大功告成，配置非常简单，我们来看看使用 `ts-jest` 以及 `@swc/jest` 两者的对比。
 
-ts-jest：
+**ts-jest：**
 
 ![ts-jest](./ts-jest.png)
 
-@swc/jest：
+**@swc/jest：**
 
 ![@swc/jest](./swc.png)
 

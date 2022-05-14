@@ -342,7 +342,7 @@ describe("AuthButton Mock Axios", () => {
 :::
 
 ```shell
-npm i -D msw
+npm i -D msw@0.39.2
 ```
 
 先在 `tests/mockServer/handlers.ts` 里添加 Http 请求的 Mock Handler：
