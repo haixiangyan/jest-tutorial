@@ -74,6 +74,14 @@ module.exports = {
           "/thoughts/15-rtl-mistakes.md",
         ],
       },
+      {
+        title: "最后",
+        collapsable: false,
+        children: [
+          "/end/github.md",
+          "/end/end.md",
+        ]
+      }
     ],
 
     // 搜索
