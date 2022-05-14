@@ -18,6 +18,9 @@ module.exports = {
     "@vuepress/back-to-top",
     "@vuepress/active-header-links",
   ],
+  markdown: {
+    lineNumbers: true,
+  },
   themeConfig: {
     logo: "/images/logo.png",
     repo: "https://github.com/haixiangyan/jest-tutorial",
