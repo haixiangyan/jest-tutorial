@@ -34,7 +34,7 @@ module.exports = {
         children: ["/"],
       },
       {
-        title: "基础实战",
+        title: "基础实践",
         collapsable: false,
         children: [
           "/basic/getting-started/",
@@ -55,14 +55,24 @@ module.exports = {
         ],
       },
       {
-        title: "技巧方法",
+        title: "测试思路",
         collapsable: false,
-        children: [],
-      },
-      {
-        title: "测试思想",
-        collapsable: false,
-        children: [],
+        children: [
+          "/thoughts/why-test.md",
+          "/thoughts/what-should-we-test.md",
+          "/thoughts/test-category.md",
+          "/thoughts/testing-implementation-details.md",
+          "/thoughts/abstraction.md",
+          "/thoughts/bring-test-to-team.md",
+          "/thoughts/tdd.md",
+          "/thoughts/write-more-integration-test.md",
+          "/thoughts/dont-mock-fetch.md",
+          "/thoughts/dont-nest-in-test.md",
+          "/thoughts/how-to-test-custom-hooks.md",
+          "/thoughts/how-to-test-render-props.md",
+          "/thoughts/3-common-mistakes.md",
+          "/thoughts/15-rtl-mistakes.md",
+        ],
       },
     ],
 
