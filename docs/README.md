@@ -1,6 +1,8 @@
-# 前言
+# 小书介绍
 
 [![Coverage Status](https://coveralls.io/repos/github/haixiangyan/jest-tutorial-example/badge.svg?branch=main)](https://coveralls.io/github/haixiangyan/jest-tutorial?branch=main)
+
+<img src="../cover.jpeg" width="300"/>
 
 ## 测试难点
 

@@ -2,7 +2,9 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/haixiangyan/jest-tutorial-example/badge.svg?branch=main)](https://coveralls.io/github/haixiangyan/jest-tutorial?branch=main)
 
-## 测试难点
+<img src="../cover.jpeg" width="300"/>
+
+## 前言
 
 [Jest](https://jestjs.io/) 看似很简单，就像很多博客写的那样：
 
@@ -26,7 +28,7 @@ expect(sum(1, 1)).toEqual(2)
 
 **好的测试会让你获得很高的代码信心，而差的测试则会严重拖垮项目开发。所以，大家所厌恶的不应该是测试本身，而是那些拖垮项目的测试。**
 
-## 小书目的
+## 目的
 
 我在网上翻找关于前端测试的资料时，我发现真的太少了，几乎可以分为几类：
 
@@ -50,7 +52,7 @@ expect(sum(1, 1)).toEqual(2)
 他写了很多关于测试思路的文章，每一篇都非常精彩。**受他的启发，我觉得有必要把这些思想和技巧分享出来，最终形成了这本小书。**
 
 
-## 小书内容
+## 内容
 
 ::: tip
 此次教程主要分享测试的思路为主，虽然以 React 为主要技术栈，但使用其它技术栈的读者依然可以流畅阅读。
@@ -66,7 +68,7 @@ expect(sum(1, 1)).toEqual(2)
 
 **支线思想。** 分享一些 Kent 的文章（中文翻译）以及测试总结。
 
-## 关注一下
+## 求关注
 
 **这教程 + 配套项目写了 3 周，说实话挺累的。原创不易，打赏就不必了，观众老爷省着吧。只求大家多关注一下我的新公众号【写代码的海怪】。**
 
