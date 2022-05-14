@@ -2,7 +2,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/haixiangyan/jest-tutorial-example/badge.svg?branch=main)](https://coveralls.io/github/haixiangyan/jest-tutorial?branch=main)
 
-[《Jest 实践指南》访问链接](http://github.yanhaixiang.com/jest-tutorial/)
+[《Jest 实践指南》访问链接](https://github.yanhaixiang.com/jest-tutorial/)
 
 <img src="../cover.jpeg" width="300"/>
 
