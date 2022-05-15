@@ -8,4 +8,5 @@
 * [前端单测，我们应该测什么？](https://juejin.cn/post/7084526003548061703)
 * [使用 React Testing Library 的 15 个常见错误](https://juejin.cn/post/7081890362700070925)
 * [TDD 的原理和使用场景](https://juejin.cn/post/7094487842709045285)
+* [如何把测试带给团队？](https://juejin.cn/post/7097781959174127653)
 * 更新中...
