@@ -5,7 +5,7 @@
 
 [《Jest 实践指南》访问链接](https://github.yanhaixiang.com/jest-tutorial/)
 
-<img src="../cover.jpeg" width="300"/>
+<img src="./cover.jpeg" width="300"/>
 
 ## 前言
 
