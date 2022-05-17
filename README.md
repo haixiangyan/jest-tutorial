@@ -43,14 +43,14 @@ expect(sum(1, 1)).toEqual(2)
 
 同时，我还拜访了一下 [Jest 的官网](https://jestjs.io/zh-Hans/) 。没想到，都 2022 年了，中文翻译依然这么难看：
 
-![](./bad-translation.png)
+![](./docs/bad-translation.png)
 
 先不说翻译的正确性如何，单看这中文的内容就让人没有想看下去的欲望，真希望 Jest 能找稍微专业一点的人来做翻译。
 由于官网的中文翻译做的实在太烂，遇到问题几乎在中文社区是找不到的。
 
 终于，我看到了 React Testing Library 作者 Kent C. Dodds 的 [博客](https://kentcdodds.com/) 。
 
-![](./kentcdodds.png)
+![](./docs/kentcdodds.png)
 
 他写了很多关于测试思路的文章，每一篇都非常精彩。**受他的启发，我觉得有必要把这些思想和技巧分享出来，最终形成了这本小书。**
 
