@@ -1,6 +1,7 @@
 # 小书介绍
 
 [![Coverage Status](https://coveralls.io/repos/github/haixiangyan/jest-tutorial-example/badge.svg?branch=main)](https://coveralls.io/github/haixiangyan/jest-tutorial?branch=main)
+![](https://visitor-badge.glitch.me/badge?page_id=jest-tutorial)
 
 [《Jest 实践指南》访问链接](https://github.yanhaixiang.com/jest-tutorial/)
 
