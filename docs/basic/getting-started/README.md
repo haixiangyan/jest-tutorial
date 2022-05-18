@@ -2,6 +2,10 @@
 
 首先，我们来创建一个新项目。
 
+::: warning
+阅读中遇到卡壳时，可以参考 [配套项目](https://github.com/haixiangyan/jest-tutorial-example) 。
+:::
+
 ## 创建项目
 
 使用 `npm` 初始化，并安装 `jest`。
