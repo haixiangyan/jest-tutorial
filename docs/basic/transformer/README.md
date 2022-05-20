@@ -25,12 +25,12 @@ npm i -D @babel/preset-typescript
 module.exports = {
   presets: [
     ['@babel/preset-env', {targets: {node: 'current'}}],
-    '@babel/preset-typescrjjjipt',
+    '@babel/preset-typescript',
   ],
 };
 ```
 
-然后安装 [babel-jest](https://www.npmjs.com/package/babel-jest) ，再在 `jest.config.js` 里添加对 `.js` 以及 `.ts` 的转译的：
+然后安装 [babel-jest](https://www.npmjs.com/package/babel-jest) ，再在 `jest.config.js` 里添加对 `.js` 以及 `.ts` 的转译：
 
 ```shell
 npm i -D babel-jest
@@ -244,7 +244,7 @@ module.exports = {
 ```
 
 看到这样的配置方法，你是不是觉得 JS 的单一原则太难顶了？这么简单的一个功能都要通过第三方的 `ts-jest` 来提供？然而，坏消息是 `webpack` 的配置也不会读 `tsconfig.json` 里面的 `paths`，
-**所以，开发者不仅要在 `tsconfig.json` 里写一份路径映射，还要在 `webpack.config.js` 里再写一份** 。[详见这里](https://stackoverflow.com/questions/40443806/webpack-resolve-alias-does-not-work-with-typescript) 
+**所以，开发者不仅要在 `tsconfig.json` 里写一份路径映射，还要在 `webpack.config.js` 里再写一份** 。[详见这里](https://stackoverflow.com/questions/40443806/webpack-resolve-alias-does-not-work-with-typescript)。
 
 ::: tip
 本次教程将用 `moduleDirectories` 来实现路径别名，如果你想用 `moduleNameMapper`，那么后续的 Webpack 配置可能也要跟着改一下。
