@@ -34,7 +34,10 @@ module.exports = {
       {
         title: "介绍",
         collapsable: false,
-        children: ["/"],
+        children: [
+          "/",
+          "/intro/why-test/",
+        ],
       },
       {
         title: "基础实践",
