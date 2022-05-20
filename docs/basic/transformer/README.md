@@ -6,50 +6,11 @@
 
 下面我们就以 `Jest x TypeScript` 为例子来讲如何对测试代码做转译吧。
 
-## Babel 转译
-
-::: tip
-本教程会使用第二个方法：使用 `ts-jest` 来转译，下面权当了解就好。
-:::
-
-这里直接搬运 [官网的教程](https://jestjs.io/docs/getting-started#using-typescript-via-babel) 了：
-
-```shell
-npm i -D @babel/preset-typescript
-```
-
-在 `babel.config.js` 里添加 TypeScript 的转译包：
-
-```js
-// babel.config.js
-module.exports = {
-  presets: [
-    ['@babel/preset-env', {targets: {node: 'current'}}],
-    '@babel/preset-typescript',
-  ],
-};
-```
-
-然后安装 [babel-jest](https://www.npmjs.com/package/babel-jest) ，再在 `jest.config.js` 里添加对 `.js` 以及 `.ts` 的转译：
-
-```shell
-npm i -D babel-jest
-```
-
-```js
-// jest.config.js
-module.exports = {
-  "transform": {
-    "\\.[jt]sx?$": "babel-jest"
-  },
-}
-```
-
-使用 Babel 做转译的缺点是无法让 Jest 在运行时做类型检查，所以更推荐大家使用 `ts-jest`，利用 `tsc` 来转译 TypeScript。
-
-> Because TypeScript support in Babel is purely transpilation, Jest will not type-check your tests as they are run.
-
 ## TSC 转译
+
+::: warning
+本教程使用 `ts-jest` 作为主力转译器，后面 **《Jest 性能部分》** 会尝试使用其它转译器。
+:::
 
 首先安装 [typescript](https://www.npmjs.com/package/typescript) ：
 
@@ -150,8 +111,21 @@ npm i -D @types/jest@27.4.1
 
 ## 更多转译器
 
-还记得这一章开头说的：**Jest 本身不做转译，而是利用别的转译器的能力来转译。** 因此，我们除了能用 `babel` 和 `tsc` 来转译，
-还能用现在非常火的 [esbuild](https://esbuild.github.io/) 和 [swc](https://swc.rs/docs/getting-started) 来做转译。
+还记得这一章开头说的：**Jest 本身不做转译，而是利用别的转译器的能力来转译。** 因此，我们除了用 `tsc` 来转译，还能用其它转译器。
+
+### Babel 转译器
+
+可能有些同学的项目就是 Webpack + Babel 为主，那么你也可以选择使用 `babel-jest` 来做转译，
+具体配置看 [官网的教程](https://jestjs.io/docs/getting-started#using-typescript-via-babel) 。
+
+Babel 做转译的 **缺点是无法让 Jest 在运行时做类型检查**，所以更推荐大家使用 `ts-jest`，利用 `tsc` 来转译 TypeScript。
+
+> Because TypeScript support in Babel is purely transpilation, Jest will not type-check your tests as they are run. —— 官网
+
+### 非官方转译器
+
+当然，我们也能用现在非常火的 [esbuild](https://esbuild.github.io/) 和 [swc](https://swc.rs/docs/getting-started) 来做转译。
+由于它们都不是 Jest 官方推荐的转译器，所以使用时要注意兼容性和坑。
 
 顺便说一下，`esbuild` 是 [Golang](https://go.dev/) 写的一个转译器，速度巨快：
 
@@ -244,7 +218,7 @@ module.exports = {
 ```
 
 看到这样的配置方法，你是不是觉得 JS 的单一原则太难顶了？这么简单的一个功能都要通过第三方的 `ts-jest` 来提供？然而，坏消息是 `webpack` 的配置也不会读 `tsconfig.json` 里面的 `paths`，
-**所以，开发者不仅要在 `tsconfig.json` 里写一份路径映射，还要在 `webpack.config.js` 里再写一份** 。[详见这里](https://stackoverflow.com/questions/40443806/webpack-resolve-alias-does-not-work-with-typescript)。
+**所以，开发者不仅要在 `tsconfig.json` 里写一份路径映射，还要在 `webpack.config.js` 里再写一份** 。[详见这里](https://stackoverflow.com/questions/40443806/webpack-resolve-alias-does-not-work-with-typescript) 。
 
 ::: tip
 本次教程将用 `moduleDirectories` 来实现路径别名，如果你想用 `moduleNameMapper`，那么后续的 Webpack 配置可能也要跟着改一下。
