@@ -6,7 +6,7 @@
 <img src="./cover.jpeg" width="300"/>
 
 * [《Jest 实践指南》访问链接](https://github.yanhaixiang.com/jest-tutorial/)
-* [《Jest 实践指南》配套项目](https://github.yanhaixiang.com/jest-tutorial-example/)
+* [《Jest 实践指南》配套项目](https://github.com/haixiangyan/jest-tutorial-example)
 
 ## 前言
 
