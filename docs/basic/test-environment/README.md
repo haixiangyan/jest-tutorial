@@ -91,8 +91,8 @@ module.exports = {
 };
 ```
 
-::: danger
-**注意：一定要使用 `setupFilesAfterEnv` 而不是 `setupFiles`！**
+::: warning
+**推荐：使用 `setupFilesAfterEnv` 而不是 `setupFiles`。**
 :::
 
 **设置了之后，`jest-setup.ts` 会在每个测试文件执行前先执行一次。** 相当于每执行一次测试，都会在全局添加一次 `localStorage` 的 Mock 实现。
@@ -100,9 +100,27 @@ module.exports = {
 
 ![](./storage-setup-success.png)
 
+
+## `setupFilesAfterEnv` vs `setupFiles`
+
+插入一下：相信很多人都知道 Jest 的 `setupFiles`，但不太了解 `setupFilesAfterEnv`，这里简单讲讲它们的区别
+**（可从 [官网的介绍](https://jestjs.io/docs/configuration#setupfiles-array) 了解更多）**：
+
+![](./setupFiles-vs-setupFilesAfterEnv.png)
+
+简单来说：
+* `setupFiles` 是在 **引入测试环境（比如下面的 `jsdom`）之后** 执行的代码
+* `setupFilesAfterEnv` 则是在 **安装测试框架之后** 执行的代码
+
+具体应用场景是：在 `setupFiles` 可以添加 **测试环境** 的补充，比如 Mock 全局变量 `abcd` 等。而在 `setupFilesAfterEnv` 可以引入和配置 **Jest/Jasmine（Jest 内部使用了 Jasmine）** 插件。
+
+如果你试图在 `setupFiles` 添加 Jest 的扩展/插件，那么你可能会得到 `expect is not defined` 报错。[详见这个 Issue](https://github.com/testing-library/jest-dom/issues/122#issuecomment-650520461) 。
+
+**为了简便，本教程把初始化代码都放在 `setupFilesAfterEnv` 中。在真实项目中，大家再按自己的需求来对应做配置即可。**
+
 ## jsdom 测试环境
 
-但是这样有点傻，因为我们不可能把浏览器里所有的 API 都 Mock 一遍，而且不可能做到 100% 还原所有功能。因此，`jest` 提供了 `testEnvironment` 配置：
+回到主题，像上面 Mock `LocalStorage` 这样有点傻，因为我们不可能把浏览器里所有的 API 都 Mock 一遍，而且不可能做到 100% 还原所有功能。因此，`jest` 提供了 `testEnvironment` 配置：
 
 ```js
 module.exports = {
