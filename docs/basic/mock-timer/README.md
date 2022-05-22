@@ -228,7 +228,7 @@ describe('sleep', () => {
 })
 ```
 
-上面的用例很简单：在 “快进时间” 之前检查 `callbacl` 没有被调用，调用 `jest.runAllTimers` 后，理论上 `callbacl` 会被执行一次。
+上面的用例很简单：在 “快进时间” 之前检查 `callback` 没有被调用，调用 `jest.runAllTimers` 后，理论上 `callback` 会被执行一次。
 
 然而，当我们跑这个用例时会发现最后一行的 `expect(callback).toHaveBeenCalledTimes(1);` 会报错：
 
