@@ -253,7 +253,7 @@ expect(callback).toHaveBeenCalledTimes(1);
 
 ## Event Loop
 
-如果你不能马上发现上面报错的原因，那么你还没完成理解 JavaScript 的执行顺序。要解释这两个报错，我们还得从 `Event Loop` 说起。
+如果你不能马上发现上面报错的原因，那么你还没完全理解 JavaScript 的执行顺序。要解释这两个报错，我们还得从 `Event Loop` 说起。
 有别于八股文，我这里只说一个简单的版本。
 
 ### Message Queue
