@@ -6,7 +6,7 @@
 
 ## Jest 的架构
 
-要解决 Jest 的性能问题，我们得了解一下 Jest 是怎么运行的。之前偶然在 [YouTube 《Jest Architecture](https://www.youtube.com/watch?v=3YDiloj8_d0&t=2s) 上看到 Jest 作者非常详细地讲述整个 Jest 执行流程，英语比较好的同学可以直接看这个视频进行了解，我这里做一个简单的搬运。
+要解决 Jest 的性能问题，我们得了解一下 Jest 是怎么运行的。之前偶然在 [YouTube](https://www.youtube.com/watch?v=3YDiloj8_d0&t=2s) 上看到 Jest 作者非常详细地讲述整个 Jest 执行流程，英语比较好的同学可以直接看这个视频进行了解，我这里做一个简单的搬运。
 
 ![](./jest-architecture.png)
 
