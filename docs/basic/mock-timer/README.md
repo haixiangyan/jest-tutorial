@@ -228,7 +228,7 @@ describe('sleep', () => {
 })
 ```
 
-上面的用例很简单：在 “快进时间” 之前检查 `callbacl` 没有被调用，调用 `jest.runAllTimers` 后，理论上 `callbacl` 会被执行一次。
+上面的用例很简单：在 “快进时间” 之前检查 `callback` 没有被调用，调用 `jest.runAllTimers` 后，理论上 `callback` 会被执行一次。
 
 然而，当我们跑这个用例时会发现最后一行的 `expect(callback).toHaveBeenCalledTimes(1);` 会报错：
 
@@ -253,7 +253,7 @@ expect(callback).toHaveBeenCalledTimes(1);
 
 ## Event Loop
 
-如果你不能马上发现上面报错的原因，那么你还没完成理解 JavaScript 的执行顺序。要解释这两个报错，我们还得从 `Event Loop` 说起。
+如果你不能马上发现上面报错的原因，那么你还没完全理解 JavaScript 的执行顺序。要解释这两个报错，我们还得从 `Event Loop` 说起。
 有别于八股文，我这里只说一个简单的版本。
 
 ### Message Queue
