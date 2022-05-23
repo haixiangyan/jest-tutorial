@@ -294,7 +294,7 @@ console.log(2)
 
 ### async / await
 
-`async / await` 是 `Promise` 的语法糖，`async` 会返回一个 Promise，而 `await` 则会把剩下的代码包裹在 `then` 的回调里，比如：
+`async / await` 是 `Promise` 的语法糖，`async` 会返回一个 `Promise`，而 `await` 则会把剩下的代码包裹在 `then` 的回调里，比如：
 
 ```ts
 await hello()

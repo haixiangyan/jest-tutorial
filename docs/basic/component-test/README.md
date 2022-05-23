@@ -125,7 +125,7 @@ declare module "*.less" {
 创建一个用例 `tests/components/AuthButton/simple.test.tsx`：
 
 ```tsx
-// tests/components/simple.test.tsx
+// tests/components/AuthButton/simple.test.tsx
 import { render, screen } from "@testing-library/react";
 import AuthButton from "components/AuthButton";
 import React from "react";
