@@ -106,7 +106,7 @@ describe("useCounter", () => {
 那我们是否可以通过前面讲的 Mock 手段来处理掉 `useState` 呢？**千万别这么做！** 假如 Hook 里不仅有 `useState`，还有 `useEffect` 这样的呢？
 难道你要每个 React API 都要 Mock 一遍么？
 
-想想我们做测试的初衷，我们做测试是为什么？**测试的初衷是为了带我们带来强大的代码信心。**。好了，我知道你听这句话都听烦了，我自己都说烦了。
+想想我们做测试的初衷，我们做测试是为什么？ **测试的初衷是为了带我们带来强大的代码信心。** 好了，我知道你听这句话都听烦了，我自己都说烦了。
 
 如果你把测试初衷忘掉，会很容易掉入测试代码细节的陷阱。一旦你的关注点不是代码的信心，而是测试代码细节，那么你的测试用例会变得非常脆弱，难以维护。
 这样写出来的测试不仅不能给你带来代码信心，还会拖垮开发进程，真的不如不做测试。
@@ -198,7 +198,7 @@ describe("useCounter", () => {
 当然可以！我们要做的就是创建一个 `setup` 函数，在里面生成组件，同时把 `useCounter` 的结果返回出来就可以了：
 
 ```tsx
-// tests/hooks/useCounter/setupTestComponent.test.ts
+// tests/hooks/useCounter/setupTestComponent.test.tsx
 import useCounter from "hooks/useCounter";
 import { act, render } from "@testing-library/react";
 import React from "react";
@@ -352,10 +352,11 @@ describe("useCounter", () => {
 这里我来再举一个更复杂的例子：`useQuery`。先安装必需的 NPM 包：
 
 ```shell
-npm i -D react-router-dom@6.3.0
+npm i react-router-dom@6.3.0 history@5.3.0
 ```
 
 ```ts
+// src/hooks/useQuery.ts
 import React from "react";
 import { useLocation } from "react-router-dom";
 
@@ -455,7 +456,7 @@ describe("userQuery", () => {
 ```
 
 ::: warning
-注意，React Route v5 和 v6 两个版本的 `history` 传入方式是不一样的。
+注意，`react-router-dom` v5 和 v6 两个版本的 `Router` 传入 `history` 方式是不一样的。
 :::
 
 ## 总结
