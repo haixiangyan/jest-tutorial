@@ -45,11 +45,11 @@ module.exports = {
 
 ## Prettier
 
-**[Prettier](https://prettier.io/) 则是一个代码格式化工具。** 刚刚说到 ESLint 是通过制定的的规范来检查代码的，这里的 **规范** 有两种：
+**[Prettier](https://prettier.io/) 是一个代码格式化工具。** 前一小节说到 ESLint 是通过制定的的规范来检查代码的，这里的 **规范** 有两种：
 * 代码风格规范
 * 代码质量规范
 
-Prettier 负责的就是代码风格这一块。
+Prettier 主要负责的是代码风格。
 
 ::: tip
 **绝大多数程序是不会对代码质量规范有异议的，但他们往往很难在代码风格上达成共识。**
@@ -218,15 +218,15 @@ module.exports = {
 
 ## 总结
 
-**看完这一章，我们了解到不仅写测试能提高代码信心，静态代码检查工具也可以给我们很强的代码自信。** 具体的工具是配置 TypeScript 和 ESLint。
+**看完这一章，我们了解到不仅写测试能提高代码信心，静态代码检查工具也可以给我们很强的代码自信。** 具体的途径是配置 TypeScript 和 ESLint。
 
 ESLint 中包含了两类规范：
 * 代码风格规范
 * 代码质量规范
 
-Prettier 可以给我们提供一份相对全面的代码风格规范，可以把它与 ESLint 结合起来使用。
+Prettier 可以给我们提供一份相对全面的代码风格规范。建议把它与 ESLint 结合起来使用。
 
-对于代码质量规范，则需要开发者自己去找对应的框架提供的 ESLint 规范，比如有 Vue、React、Jest、React Testing Library 等。
+对于代码质量规范，开发者需要自己去找对应的框架提供的 ESLint 规范，比如有 Vue、React、Jest、React Testing Library 等。
 
-最后还说了 `extends` 与 `plugins` 两个配置项的区别：**`plugins` 只是开启了这个插件，而 `extends` 则会继承别人写好的一份 `.eslintrc` 的配置，
-这份配置不仅仅包括了 `rules` 还有 `parser`，`plugins` 之类的东西。**
+最后顺带解释了 `extends` 与 `plugins` 两个配置项的区别：**`plugins` 只是开启了这个插件，而 `extends` 则会继承别人写好的一份 `.eslintrc` 的配置，
+这份配置不仅仅包括了 `rules` 还有 `parser`，`plugins` 之类的配置项。**
