@@ -417,7 +417,7 @@ describe("reducer", () => {
 下面我们来实现这个功能的集成测试吧。首先，我们来改造一下 `React Tesitng Library` 提供的 `render` 函数：
 
 ```tsx
-// tests/testUtils/render.ts
+// tests/testUtils/render.tsx
 import React, { FC } from "react";
 import { render as rtlRender, RenderOptions } from "@testing-library/react";
 import { configureStore } from "@reduxjs/toolkit";
