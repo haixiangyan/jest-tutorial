@@ -107,7 +107,37 @@ Object.defineProperty(window.location, 'href', {
 });
 ```
 
-**答案是：不行！** 你会得到这样的报错：`Error: Not implemented: navigation (except hash changes)`，毕竟是 Hack 手法，并不推荐。
+**答案是：不行！** 你会得到这样的报错：`Error: Not implemented: navigation (except hash changes)`，毕竟是 Hack 手法，并不推荐，[详见这个 Issue](https://github.com/facebook/jest/issues/890#issuecomment-501260238) 。
+
+::: tip
+经 Issue 区提醒，也可以尝试以下方法：
+```ts
+describe('getSearchObj', () => {
+  it('可以获取当前网址的查询参数对象', () => {
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: { href: 'https://google.com?a=1&b=2', search: '?a=1&b=2' },
+    });
+    expect(window.location.search).toEqual('?a=1&b=2');
+    expect(getSearchObj()).toEqual({
+      a: '1',
+      b: '2',
+    });
+  });
+  it('空参数返回空', () => {
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: { href: 'https://google.com', search: '' },
+    });
+    expect(window.location.search).toEqual('');
+    expect(getSearchObj()).toEqual({});
+  });
+});
+```
+
+这个方法与上面不同点在于：Mock `window.location` 对象，而不是 `window.location.href` 属性。但缺点是不仅要在 `href` 写查询参数，还要在 `search` 再写一遍查询参数。
+:::
+
 
 终于，有人受不了，不就 `jest` 没有把 `jsdom` 对象丢到全局么？把 `jsdom` 测试环境做个扩展不就好了：
 
