@@ -391,7 +391,7 @@ const component = () => {
 要创建 React Router 环境，我们可以使用 `createMemoryHistory` 这个 API：
 
 ```tsx
-// tests/hooks/useQuery.test.ts
+// tests/hooks/useQuery.test.tsx
 import React from "react";
 import useQuery from "hooks/useQuery";
 import { createMemoryHistory, InitialEntry } from "history";
