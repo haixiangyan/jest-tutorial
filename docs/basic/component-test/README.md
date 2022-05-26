@@ -81,10 +81,10 @@ const AuthButton: FC<Props> = (props) => {
 export default AuthButton;
 ```
 
-这里我们还不忘搞点花里胡哨，引入了 `src/components/AuthButton/styles.less`：
+这里我们还不忘搞点花里胡哨，引入了 `src/components/AuthButton/styles.module.less`：
 
 ```less
-// src/components/AuthButton/styles.less
+// src/components/AuthButton/styles.module.less
 .authButton {
   border: 1px solid red;
 }
