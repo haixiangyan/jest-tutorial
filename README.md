@@ -66,9 +66,9 @@ expect(sum(1, 1)).toEqual(2)
 
 **基础实践。** 从 0 到 1 写项目和测试，每一章会通过一个业务例子来分享测试难点、解法和思路。
 
-**[配套项目](https://github.com/haixiangyan/jest-tutorial-example)。** 如果你在某一步卡壳了，也可以参考这个项目。
-
 **测试思路。** 分享一些 Kent 的文章（中文翻译）以及测试总结。
+
+**[配套项目](https://github.com/haixiangyan/jest-tutorial-example)。** 如果你在某一步卡壳了，也可以参考这个项目。
 
 ## 求关注
 
