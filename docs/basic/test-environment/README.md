@@ -75,7 +75,8 @@ Object.defineProperty(global, 'localStorage', {
     clear() {
       this.store = {}
     }
-  }
+  },
+  configurable: true,
 })
 ```
 
