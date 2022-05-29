@@ -62,8 +62,9 @@ TDD 是一种非常好用的开发模式，做法很简单：**先写测试，�
 * 🌀 重构部分：再回过头看审视自己的代码，把它重构成可读性和维护性更高的代码（这一步最爽的点就是在重构时，你有一个测试会告诉你有没有搞崩原有逻辑）。
 * 🔁 重复：这就是个循环，反正 😉 一直走下去，直到写完这个功能
 
-**与之相反的就是 BDD（Behavior Driven Development）行为驱动测试：在实现所有业务之后，再对一些重要部分补测试用例。**
-我们之前写的 `sum`, `storage` 以及 `getSearchObj` 都这种开发模式。
+**TDD 站在开发者的视角测试一个功能的组成模块比如函数或方法是否预期，而 BDD（Behavior Driven Development）行为驱动测试，与之不同是站在用户的角度描述测试用例。更多可阅读 [Understanding the Differences Between BDD & TDD](https://cucumber.io/blog/bdd/bdd-vs-tdd/#:~:text=BDD%20is%20designed%20to%20test,pieces%20of%20functionality%20in%20isolation.)。**
+
+我们之前写的 `sum`, `storage` 以及 `getSearchObj` 属于 TDD 开发模式。
 
 ## 适用场景
 
