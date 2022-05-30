@@ -270,7 +270,9 @@ describe("useCounter", () => {
 用完就把别人抛弃了。
 
 ::: warning
-注意：由于 `inc` 里面的 `setState` 是一个异步逻辑，因此我们在 `@testing-library/react` 提供的 `act` 里调用它。
+注意：由于 `inc` 里面的 `setState` 是一个异步逻辑，因此我们可以使用 `@testing-library/react` 提供的 `act` 里调用它。
+
+`act` 可以确保回调里的异步逻辑走完再执行后续代码，[详情可见官网这里](https://reactjs.org/docs/testing-recipes.html#act) 。
 :::
 
 ## renderHook
