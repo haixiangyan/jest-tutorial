@@ -279,6 +279,11 @@ describe("useCounter", () => {
 
 基于这样的想法，`@testing-library/react-hooks` 把上面的步骤封装成了一个公共函数 `renderHook`：
 
+::: warning
+注意：在 `@testing-library/react@13.1.0` 以上的版本已经把 `renderHook` 内置到里面了，但这个版本需要和 `react@18` 一起使用。
+为了示例更稳定，这里使用了分开（旧）版本。
+:::
+
 ```shell
 npm i -D @testing-library/react-hooks@8.0.0
 ```
