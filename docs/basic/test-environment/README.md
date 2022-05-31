@@ -66,7 +66,7 @@ Object.defineProperty(global, 'localStorage', {
     setItem(key: string, value: string) {
       this.store[key] = value;
     },
-    getItem(key: string, value: string) {
+    getItem(key: string) {
       return this.store[key];
     },
     removeItem(key: string) {
