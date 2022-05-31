@@ -112,6 +112,7 @@ Object.defineProperty(window.location, 'href', {
 ::: tip
 经 Issue 区提醒，也可以尝试以下方法：
 ```ts
+// tests/utils/getSearchObj.test.ts
 describe('getSearchObj', () => {
   it('可以获取当前网址的查询参数对象', () => {
     Object.defineProperty(window, 'location', {
@@ -181,7 +182,7 @@ module.exports = {
 再把测试改成如下：
 
 ```ts
-// src/utils/getSearchObj.ts
+// tests/utils/getSearchObj.test.ts
 import getSearchObj from "utils/getSearchObj";
 
 describe("getSearchObj", () => {
@@ -269,7 +270,7 @@ module.exports = {
 最后，把测试代码改为：
 
 ```ts
-// src/utils/getSearchObj.ts
+// tests/utils/getSearchObj.test.ts
 import getSearchObj from "utils/getSearchObj";
 
 describe("getSearchObj", () => {
