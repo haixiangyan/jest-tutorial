@@ -70,6 +70,9 @@ expect(sum(1, 1)).toEqual(2)
 
 **[配套项目](https://github.com/haixiangyan/jest-tutorial-example)。** 如果你在某一步卡壳了，也可以参考这个项目。
 
+最近给这个 Repo 开了一个 [讨论区](https://github.com/haixiangyan/jest-tutorial/discussions) ，如果你有任何问题（Jest、测试、小书）
+，都可以在这里一起讨论 😄。
+
 ## 求关注
 
 **这教程 + 配套项目写了 3 周，说实话挺累的。原创不易，打赏就不必了，观众老爷省着吧。只求大家多关注一下我的新公众号【写代码的海怪】。**
