@@ -304,7 +304,7 @@ describe("getSearchObj", () => {
 
 **第二种方法使用 [jest-location-mock](https://www.npmjs.com/package/jest-location-mock) 。** 这种方法会监听 `window.location.assign`，通过它来改变网页地址。
 
-两种方法任君选择，我会比较推荐使用 `jest-locatin-mock`，简单一点。
+两种方法任君选择，我会比较推荐使用 `jest-location-mock`，简单一点。
 
 **“如何在测试中修改网页地址”** 是前端测试中非常常见的一个问题，在中文社区里几乎好的回答，很多还停留在 `Object.defineProperty`。然而，这个方法早在 `jest@21.x` 的版本就用不了了。
 
