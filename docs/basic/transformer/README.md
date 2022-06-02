@@ -213,7 +213,9 @@ const { compilerOptions } = require('./tsconfig')
 module.exports = {
   // [...]
   // { prefix: '<rootDir/>' }
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: "<rootDir>/",
+  }),
 }
 ```
 
