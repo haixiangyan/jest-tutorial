@@ -176,6 +176,7 @@ export default App;
 {
   "compilerOptions": {
     "jsx": "react",
+    "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
       "utils/*": ["src/utils/*"],
