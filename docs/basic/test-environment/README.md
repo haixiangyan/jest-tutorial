@@ -44,7 +44,7 @@ describe("storage", () => {
   });
 
   it("可以设置值", () => {
-    localStorage.setItem("my-app-newKye", "hello");
+    localStorage.setItem("my-app-newKey", "hello");
     expect(storage.get("newKey")).toEqual("hello");
   });
 });
