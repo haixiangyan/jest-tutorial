@@ -245,6 +245,11 @@ describe('AuthButton', () => {
 
 这样一来，我们就不用担心 `getByText` 返回值了。
 
+::: warning
+如果你的项目报了 `Entry point of type library '@testing-library/jest-dom' specified in compilerOptions` 这个错误，
+可以按照 [这个 Issue](https://github.com/haixiangyan/jest-tutorial/issues/26) 来修复。
+:::
+
 ## 三种 Mock 思路
 
 上面只是一个 Demo 测试，现在我们来测这个组件的功能。
