@@ -193,4 +193,11 @@ export default App;
 
 现在执行 `npm run start`，进入 `localhost:3000` 就能看到我们的页面了：
 
+::: warning
+如果你出现了 `[webpack-cli] TypeError: cli.isMultipleCompiler is not a function` 报错，
+这是因为 `webpack-cli@4.9` 和 `webpack-cli/serve@1.7` 有冲突导致的。
+
+解决方法是在 `package-lock.json` 里找到 `node_modules/@webpack-cli/serve` 配置项，把里面的 `"version": "1.7.0"` 改成 `"version": "1.6.1"` 即可。
+:::
+
 ![](./react-preview.png)
