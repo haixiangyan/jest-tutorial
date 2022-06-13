@@ -48,6 +48,19 @@ const result = getSearchObj()
 // }
 ```
 
+::: tip
+`getSearchObj()` 只是一个示例方法，如果你想把 **查询字符串** 转换为 **对象**，可以用下面更现代且更安全的方法(注意浏览器兼容性)：
+```ts
+const getSearchObj = () => {
+    return Object.fromEntries(
+        new URLSearchParams(window.location.search).entries(),
+    );
+};
+
+export default getSearchObj;
+```
+:::
+
 现在我们就按这个例子来给 `getSearchObj` 写测试，添加 `tests/utils/getSearchObj.test.ts`：
 
 ```ts
@@ -95,7 +108,7 @@ jsdom.reconfigure({
 // ...
 ```
 
-**那么问题来了：这里的 `jsdom` 是从哪里来的呢？** 如果你尝试用 `global.jsdom` 或者 `global.JSDOM` 来生成 `jsdom`，然后调用 `jsdom.reconfigure`，你会得到在一个大大的 `undefined`。
+**那么问题来了：这里的 `jsdom` 是从哪里来的呢？** 如果你尝试用 `global.jsdom` 或者 `global.JSDOM` 来生成 `jsdom`，然后调用 `jsdom.reconfigure`，你会得到一个大大的 `undefined`。
 因为 Jest 并没有把 [jsdom](https://www.npmjs.com/package/jsdom) NPM 的内容暴露出来，导致你无法使用 `jsdom.reconfigure`。详见 [这个 Github Issue](https://github.com/facebook/jest/issues/890) 。
 
 有的同学会留意到：刚刚在 Mock `localStorage` 的时候，我们用到了 `Object.defineProperty`，那我们能否用下面的方法来试图 Hack 掉网页地址呢？
