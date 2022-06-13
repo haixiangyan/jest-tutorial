@@ -163,11 +163,12 @@ module.exports = {
 
 ![](./path-error.png)
 
-我们还得在 `tsconfig.json` 里指定 `paths` 路径：
+我们还得在 `tsconfig.json` 里指定 `baseUrl` 和 `paths` 路径：
 
 ```json
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "paths": {
       "utils/*": ["src/utils/*"]
     }
