@@ -43,7 +43,7 @@ export const getUserRole = async () => {
 // src/components/AuthButton/index.tsx
 import React, { FC, useEffect, useState } from "react";
 import { Button, ButtonProps, message } from "antd";
-import classNames from "classnames";
+import classnames from "classnames";
 import styles from "./styles.module.less";
 import { getUserRole, UserRoleType } from "apis/user";
 
@@ -71,7 +71,7 @@ const AuthButton: FC<Props> = (props) => {
   }, []);
 
   return (
-    <Button {...restProps} className={classNames(className, styles.authButton)}>
+    <Button {...restProps} className={classnames(className, styles.authButton)}>
       {mapper[userType!] || ""}
       {children}
     </Button>
