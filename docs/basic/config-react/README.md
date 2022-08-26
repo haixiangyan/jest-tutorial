@@ -17,7 +17,7 @@
 
 ```shell
 # Webpack 依赖
-npm i -D webpack@5.72.0 webpack-cli@4.9.2 webpack-dev-server@4.8.1 html-webpack-plugin@5.5.0
+npm i -D webpack@5.72.0 webpack-cli@4.10.0 webpack-dev-server@4.8.1 html-webpack-plugin@5.5.0
 
 # Loader
 npm i -D less@4.1.2 less-loader@10.2.0 style-loader@3.3.1 css-loader@6.7.1 ts-loader@9.2.8
@@ -192,12 +192,5 @@ export default App;
 ## 启动应用
 
 现在执行 `npm run start`，进入 `localhost:3000` 就能看到我们的页面了：
-
-::: warning
-如果你出现了 `[webpack-cli] TypeError: cli.isMultipleCompiler is not a function` 报错，
-这是因为 `webpack-cli@4.9` 和 `webpack-cli/serve@1.7` 有冲突导致的，[详见这个 Issue](https://github.com/haixiangyan/jest-tutorial-example) 。
-
-解决方法是在 `package-lock.json` 里找到 `node_modules/@webpack-cli/serve` 配置项，把里面的 `"version": "1.7.0"` 改成 `"version": "1.6.1"` 即可。
-:::
 
 ![](./react-preview.png)
