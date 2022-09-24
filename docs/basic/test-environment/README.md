@@ -110,6 +110,7 @@ module.exports = {
 ![](./setupFiles-vs-setupFilesAfterEnv.png)
 
 简单来说：
+
 * `setupFiles` 是在 **引入测试环境（比如下面的 `jsdom`）之后** 执行的代码
 * `setupFilesAfterEnv` 则是在 **安装测试框架之后** 执行的代码
 

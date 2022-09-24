@@ -159,6 +159,7 @@ export default objToSearchStr;
 ## 总结
 
 在这一章里，我们学到 TDD 和 BDD 两种开发模式：
+
 * TDD：先测试，之后补充业务
 * BDD：先写业务，再对重要部分补充测试
 

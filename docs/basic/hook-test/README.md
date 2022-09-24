@@ -1,4 +1,4 @@
-## React Hook 测试
+# React Hook 测试
 
 上一章讲了如何给 Redux 代码写测试，我们日常写的 React App 还有一个很重要的部分：React Hooks，这一章就来讲讲如何测试这部分的代码。
 
@@ -469,6 +469,7 @@ describe("userQuery", () => {
 ## 总结
 
 总结一下 React Hook 的测试方法：
+
 1. 声明 `setup`，在里面通过渲染测试组件为 React Hook **提供 React 组件环境**
 2. 把 React Hook 的返回结果返回给每个用例
 3. 每个用例从 `setup` 返回拿到 React Hook 的返回值，并对其进行测试
