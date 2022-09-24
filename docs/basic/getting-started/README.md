@@ -113,6 +113,7 @@ npm run test
 ![](./test-result.png)
 
 ## 单文件测试
+
 考虑如下场景，如果我们只想测试项目中某一个单独的文件。
 ```shell
 # npx jest

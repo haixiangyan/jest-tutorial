@@ -121,6 +121,7 @@ test('should do a partial mock', () => {
   expect(bar()).toBe('bar');
 });
 ```
+
 **要注意的是：`jest.mock` 和 `jest.unmock` 是一对非常特殊的 API，它们会被提升到所有 `import` 前。也就是说，上面这段代码看起是先 import 再 mock，而真实情况是，先 mock 了，再 import：**
 
 ```ts
