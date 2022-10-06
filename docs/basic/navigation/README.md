@@ -50,6 +50,7 @@ const result = getSearchObj()
 
 ::: tip
 `getSearchObj()` 只是一个示例方法，如果你想把 **查询字符串** 转换为 **对象**，可以用下面更现代且更安全的方法(注意浏览器兼容性)：
+使用`Objectj.fromEntries`方法，需要修改tsconfig.json中的**target**为`ES2019`
 ```ts
 const getSearchObj = () => {
     return Object.fromEntries(
