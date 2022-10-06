@@ -60,7 +60,7 @@ describe("storage", () => {
 
 ```ts
 // tests/jest-setup.ts
-Object.defineProperty(global, 'localStorage', {
+Object.defineProperty(globalThis, 'localStorage', {
   value: {
     store: {} as Record<string, string>,
     setItem(key: string, value: string) {
