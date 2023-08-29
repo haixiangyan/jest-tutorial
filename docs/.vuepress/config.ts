@@ -1,4 +1,7 @@
-module.exports = {
+import { defineUserConfig, defaultTheme } from "vuepress";
+import { searchPlugin } from '@vuepress/plugin-search';
+
+export default defineUserConfig({
   base: "/jest-tutorial/",
   title: "Jest 实践指南",
   description: "从基础实战到测试思维，带你全面了解和掌握前端测试",
@@ -14,34 +17,33 @@ module.exports = {
     ["meta", { name: "author", content: "海怪" }],
   ],
   plugins: [
-    "@vuepress/medium-zoom",
-    "@vuepress/back-to-top",
-    "@vuepress/active-header-links",
+    searchPlugin({
+      maxSuggestions: 10,
+    }),
   ],
-  markdown: {
-    lineNumbers: true,
-  },
-  themeConfig: {
+  markdown: {},
+  theme: defaultTheme({
     logo: "/images/logo.png",
-    repo: "https://github.com/haixiangyan/jest-tutorial",
-    nav: [
+    colorMode: "auto",
+    repo: "https://github.com/changesuger/jest-tutorial",
+    navbar: [
       {
         text: "Issue",
-        link: "https://github.com/haixiangyan/jest-tutorial/issues",
+        link: "https://github.com/changesuger/jest-tutorial/issues",
       },
     ],
     sidebar: [
       {
-        title: "介绍",
-        collapsable: false,
+        text: "介绍",
+        collapsible: false,
         children: [
           "/",
           "/intro/why-test/",
         ],
       },
       {
-        title: "基础实践",
-        collapsable: false,
+        text: "基础实践",
+        collapsible: false,
         children: [
           "/basic/getting-started/",
           "/basic/transformer/",
@@ -61,28 +63,22 @@ module.exports = {
         ],
       },
       {
-        title: "测试思路",
-        collapsable: false,
+        text: "测试思路",
+        collapsible: false,
         children: [
           "/thoughts/articles.md",
         ],
       },
       {
-        title: "最后",
-        collapsable: false,
+        text: "最后",
+        collapsible: false,
         children: [
           "/end/github.md",
           "/end/end.md",
-        ]
+        ],
       }
     ],
 
-    // 搜索
-    search: true,
-    searchMaxSuggestions: 10,
-    lastUpdated: "最后更新",
-  },
-
-  // PWA 配置
-  serviceWorker: true,
-};
+    lastUpdated: true,
+  }),
+});

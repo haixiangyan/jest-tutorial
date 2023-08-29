@@ -1,4 +1,4 @@
-## React Hook 测试
+# React Hook 测试
 
 上一章讲了如何给 Redux 代码写测试，我们日常写的 React App 还有一个很重要的部分：React Hooks，这一章就来讲讲如何测试这部分的代码。
 
@@ -383,7 +383,7 @@ export default useQuery;
 // https://mysite.com?id=123
 const component = () => {
   const query = useQuery()
-  
+
   return (
     // 123
     <div>{query.get("id")}</div>
